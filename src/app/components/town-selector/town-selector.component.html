@@ -1,0 +1,6 @@
+<p>Select a town</p>
+<select [(ngModel)]="selectedTown">
+    <option *ngFor="let town of towns" [ngValue]="town">{{town.name}}</option>
+</select>
+<app-town *ngIf="selectedTown" [town]="selectedTown"></app-town>
+<p>------------------------------------------------------------</p>

@@ -1,0 +1,16 @@
+<div class="col-sm-8 col-sm-offset-2">
+    <form [formGroup]="townForm" (ngSubmit)="onSubmitForm()">
+      <div class="form-group">
+        <label for="name">Nom de la ville</label>
+        <input type="text" id="name" class="form-control" formControlName="name">
+      </div>
+      <div class="form-group">
+        <label for="departmentId">Nom du departement</label>
+        <select id="departmentId" class="form-control" formControlName="departmentId">
+            <option *ngFor="let department of departments" [ngValue]="department.id">{{department.name}}</option>
+        </select>
+        <!--<input type="text" id="departmentId" class="form-control" formControlName="departmentId">-->
+      </div>
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+</div>
