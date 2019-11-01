@@ -1,0 +1,25 @@
+<div>
+    <p>Select a region</p>
+    <select [(ngModel)]="selectedRegion" (change)="onSelectRegion()">
+        <option *ngFor="let region of regions" [ngValue]="region">{{region.name}}</option>
+    </select>
+    <app-region *ngIf="selectedRegion" [region]="selectedRegion"></app-region>
+</div>
+
+<div *ngIf="selectedRegion">
+    <p>------------------------------------------------------------</p>
+    <p>Select a department</p>
+    <select [(ngModel)]="selectedDepartment" (change)="onSelectDepartment()">
+        <option *ngFor="let department of departments" [ngValue]="department">{{department.name}}</option>
+    </select>
+    <app-department *ngIf="selectedDepartment" [department]="selectedDepartment"></app-department>
+</div>
+
+<div *ngIf="selectedDepartment">
+    <p>------------------------------------------------------------</p>
+    <p>Select a town</p>
+    <select [(ngModel)]="selectedTown">
+        <option *ngFor="let town of towns" [ngValue]="town">{{town.name}}</option>
+    </select>
+    <app-town *ngIf="selectedTown" [town]="selectedTown"></app-town>
+</div>

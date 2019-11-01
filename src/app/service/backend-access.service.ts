@@ -3,12 +3,16 @@ import {HttpClient} from '@angular/common/http';
 import {Town} from '../dto/town';
 import {Region} from '../dto/region';
 import {Department} from '../dto/department';
+import {TownCreator} from '../dto/townCreator';
+import {RegionCreator} from '../dto/regionCreator';
+import {DepartmentCreator} from '../dto/departmentCreator';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendAccessService 
 {
+  private errorMessage:string="Error ! : ";
   
   constructor(private http: HttpClient) 
   {
@@ -27,14 +31,27 @@ export class BackendAccessService
     return towns;
   }
 
+  getTownsByDepartmentId(departmentId:number):Array<Town>
+  {
+    let towns:Array<Town>=new Array();
+    this.http.get<Town[]>('api/ville/byDepartmentId/'+departmentId).subscribe((e) =>
+    {
+      e.forEach((element:Town) =>
+      {
+        towns.push(element);
+      });
+    });
+    return towns;
+  }
+
   getRegions():Array<Region>
   {
     let regions:Array<Region>=new Array();
-    this.http.get<any>('api/region').subscribe((e)=>
+    this.http.get<Region[]>('api/region').subscribe((e)=>
     {
       e.forEach((region)=>
       {
-        regions.push(region)
+        regions.push(region);
       });
     });
     return regions;
@@ -43,40 +60,56 @@ export class BackendAccessService
   getDepartments():Array<Department>
   {
     let departments:Array<Department>=new Array();
-    this.http.get<any>('api/departement').subscribe((e)=>
+    this.http.get<Department[]>('api/departement').subscribe((e)=>
     {
-      e.forEach((department)=>
+      e.forEach((department:Department)=>
       {
-        departments.push(department)
+        departments.push(department);
       });
     });
     return departments;
   }
 
-  postRegion(region:Region)
+  getDepartmentsByRegionId(regionId:number)
   {
-    this.http.post('api/region',region);
+    let departments:Array<Department>=new Array();
+    this.http.get<Department[]>('api/departement/byRegionId/'+regionId).subscribe((e)=>
+    {
+      e.forEach((department:Department)=>
+      {
+        departments.push(department);
+      });
+    });
+    return departments;
   }
 
-  postTown(town:Town)
+  postRegion(regionCreator:RegionCreator)
   {
-    this.http.post('api/ville',this.townToJSONCreation(town))
+    this.http.post('api/region',regionCreator)
     .subscribe
     (
-      ()=>{console.log("tout est ok");},
-      (error)=>{console.log(this.townToJSONCreation(town));console.log('Erreur ! : '+ error);}
+      ()=>{console.log("Région créée");},
+      (error)=>{console.log(this.errorMessage+error)}
     );
   }
 
-  //FIXME pas Town en entrée
-  townToJSONCreation(town:Town)
+  postDepartment(departmentCreator:DepartmentCreator)
   {
-    let townJSON=
-    {
-      "name":town.name,
-      "idDepartement":town.id
-    }
-    return townJSON;
+    this.http.post('api/departement',departmentCreator)
+    .subscribe
+    (
+      ()=>{console.log("Département créé");},
+      (error)=>{console.error(this.errorMessage+error);}
+    );
   }
-  
+
+  postTown(townCreator:TownCreator)
+  {
+    this.http.post('api/ville',townCreator)
+    .subscribe
+    (
+      ()=>{console.log("Ville créée");},
+      (error)=>{console.log(this.errorMessage+error);}
+    );
+  }
 }

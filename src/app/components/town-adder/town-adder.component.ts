@@ -3,6 +3,8 @@ import {FormGroup, FormBuilder} from '@angular/forms'
 import {BackendAccessService} from '../../service/backend-access.service';
 import {Department} from '../../dto/department';
 import {Town} from '../../dto/town';
+import {TownCreator} from '../../dto/townCreator';
+import {Region} from '../../dto/region';
 
 @Component({
   selector: 'app-town-adder',
@@ -12,16 +14,34 @@ import {Town} from '../../dto/town';
 export class TownAdderComponent implements OnInit {
 
   townForm:FormGroup;
-  departments:Department[]
+  towns:Array<Town>;
+  selectedTown:Town;
+  regions:Array<Region>;
+  selectedRegion:Region;
+  departments:Array<Department>;
+  selectedDepartment:Department;
 
   constructor(private backendAccess: BackendAccessService,private formBuilder:FormBuilder) 
   {
-    this.departments=backendAccess.getDepartments();
+    this.regions=backendAccess.getRegions();
   }
 
   ngOnInit() 
   {
     this.initForm();
+  }
+
+  onSelectRegion()
+  {
+    this.selectedDepartment=null;
+    this.selectedTown=null;
+    this.departments=this.backendAccess.getDepartmentsByRegionId(this.selectedRegion.id);
+  }
+
+  onSelectDepartment()
+  {
+    this.selectedTown=null;
+    this.towns=this.backendAccess.getTownsByDepartmentId(this.selectedDepartment.id);
   }
 
   initForm()
@@ -35,13 +55,11 @@ export class TownAdderComponent implements OnInit {
   onSubmitForm() 
   {
     const formValue = this.townForm.value;
-    const town = new Town
+    const townCreator = new TownCreator
     (
       formValue['name'],
-      formValue['departmentId']
+      this.selectedDepartment.id
     );
-    //FIXME pas le bon id ici
-    this.backendAccess.postTown(town);
+    this.backendAccess.postTown(townCreator);
   }
-
 }

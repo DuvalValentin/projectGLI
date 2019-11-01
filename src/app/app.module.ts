@@ -18,12 +18,13 @@ import { DepartmentComponent } from './components/department/department.componen
 import { TownAdderComponent } from './components/town-adder/town-adder.component';
 import { SelectorComponent } from './components/selector/selector.component';
 import { CreatorComponent } from './components/creator/creator.component';
+import { SelectionComponent } from './components/selection/selection.component';
 
 const routes:Routes = 
 [
-  { path: 'get', component: SelectorComponent },
+  { path: 'get', component: SelectionComponent },
   { path:'post',component:CreatorComponent},
-  { path: '', component: SelectorComponent }
+  { path: '', component: SelectionComponent }
 ];
 
 
@@ -38,7 +39,8 @@ const routes:Routes =
     DepartmentComponent,
     TownAdderComponent,
     SelectorComponent,
-    CreatorComponent
+    CreatorComponent,
+    SelectionComponent
   ],
   imports: [
     BrowserModule,
