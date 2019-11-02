@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Region} from '../../dto/region';
-import {BackendAccessService} from '../../service/backend-access.service';
+import {BackendRegionService} from '../../service/backend-region.service';
 
 @Component({
   selector: 'app-region-selector',
@@ -12,9 +12,9 @@ export class RegionSelectorComponent implements OnInit {
   regions:Array<Region>;
   selectedRegion:Region;
   
-  constructor(private backendAccess: BackendAccessService) 
+  constructor(private backendRegion: BackendRegionService) 
   {
-    this.regions=this.backendAccess.getRegions();
+    this.regions=this.backendRegion.getRegions();
   }
 
   ngOnInit() {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Town} from "../../dto/town";
-import {BackendAccessService} from '../../service/backend-access.service';
+import {BackendTownService} from '../../service/backend-town.service';
 
 @Component({
   selector: 'app-town-selector',
@@ -13,9 +13,9 @@ export class TownSelectorComponent implements OnInit
   selectedTown:Town;
   
 
-  constructor(private backendAccess: BackendAccessService) 
+  constructor(private backendTown:BackendTownService) 
   {
-    this.towns=this.backendAccess.getTowns();
+    this.towns=this.backendTown.getTowns();
   }
 
   ngOnInit() {}

@@ -2,12 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { Routes, RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { BackendAccessService } from './service/backend-access.service';
+import {BackendTownService} from './service/backend-town.service';
+import {BackendDepartmentService} from './service/backend-department.service';
+import {BackendRegionService} from './service/backend-region.service';
 
 import { TownSelectorComponent } from './components/town-selector/town-selector.component';
 import { TownComponent } from './components/town/town.component';
@@ -19,13 +20,8 @@ import { TownAdderComponent } from './components/town-adder/town-adder.component
 import { SelectorComponent } from './components/selector/selector.component';
 import { CreatorComponent } from './components/creator/creator.component';
 import { SelectionComponent } from './components/selection/selection.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
-const routes:Routes = 
-[
-  { path: 'get', component: SelectionComponent },
-  { path:'post',component:CreatorComponent},
-  { path: '', component: SelectionComponent }
-];
 
 
 @NgModule({
@@ -40,17 +36,17 @@ const routes:Routes =
     TownAdderComponent,
     SelectorComponent,
     CreatorComponent,
-    SelectionComponent
+    SelectionComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule,
-    RouterModule.forRoot(routes)
+    HttpClientModule
   ],
-  providers: [BackendAccessService],
+  providers: [BackendTownService,BackendDepartmentService,BackendRegionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

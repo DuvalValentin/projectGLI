@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Town} from '../../dto/town';
+import {ActivatedRoute} from '@angular/router';
+import {Department} from '../../dto/department';
+import {BackendTownService} from '../../service/backend-town.service';
 
 @Component({
   selector: 'app-town',
@@ -8,10 +11,20 @@ import {Town} from '../../dto/town';
 })
 export class TownComponent implements OnInit 
 {
-  @Input()town: Town;
+  town: Town;
+  departement: Department;
+
+  constructor(private backendTown:BackendTownService,private route: ActivatedRoute)
+  {
+    let id:number = this.route.snapshot.params['id']
+    this.backendTown.getTown(id).subscribe((e)=>
+    {
+      this.town=e;
+    });
+  }
 
   ngOnInit() 
   {
-
+    
   }
 }

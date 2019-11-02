@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Department} from '../../dto/department';
-import {BackendAccessService} from '../../service/backend-access.service';
+import {BackendDepartmentService} from '../../service/backend-department.service';
 
 @Component({
   selector: 'app-department-selector',
@@ -10,9 +10,9 @@ import {BackendAccessService} from '../../service/backend-access.service';
 export class DepartmentSelectorComponent implements OnInit 
 {
   departments:Array<Department>
-  constructor(private backendAccess: BackendAccessService)
+  constructor(private backendDepartment: BackendDepartmentService)
   {
-    this.departments=backendAccess.getDepartments();
+    this.departments=this.backendDepartment.getDepartments();
   }
 
   ngOnInit() 

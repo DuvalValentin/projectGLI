@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Town} from '../../dto/town';
 import {Region} from '../../dto/region';
 import {Department} from '../../dto/department';
-import {BackendAccessService} from '../../service/backend-access.service';
+import {BackendTownService} from '../../service/backend-town.service';
+import {BackendDepartmentService} from '../../service/backend-department.service';
+import {BackendRegionService} from '../../service/backend-region.service';
 
 @Component({
   selector: 'app-selection',
@@ -17,24 +19,29 @@ export class SelectionComponent implements OnInit {
   departments:Array<Department>;
   selectedDepartment:Department;
 
-  constructor(private backendAccess: BackendAccessService) 
+  constructor
+  (
+    private backendTown: BackendTownService,
+    private backendDepartment: BackendDepartmentService,
+    private backendRegion: BackendRegionService
+  ) 
   {
-    this.towns=this.backendAccess.getTowns();
-    this.regions=this.backendAccess.getRegions();
+    this.regions=this.backendRegion.getRegions();
   }
+  ngOnInit() {}
 
   onSelectRegion()
   {
     this.selectedDepartment=null;
     this.selectedTown=null;
-    this.departments=this.backendAccess.getDepartmentsByRegionId(this.selectedRegion.id);
+    this.departments=this.backendDepartment.getDepartmentsByRegionId(this.selectedRegion.id);
   }
 
   onSelectDepartment()
   {
     this.selectedTown=null;
-    this.towns=this.backendAccess.getTownsByDepartmentId(this.selectedDepartment.id);
+    this.towns=this.backendTown.getTownsByDepartmentId(this.selectedDepartment.id);
   }
   
-  ngOnInit() {}
+
 }
