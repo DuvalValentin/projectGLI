@@ -1,6 +1,0 @@
-<p>Select a region</p>
-<select [(ngModel)]="selectedRegion">
-    <option *ngFor="let region of regions" [ngValue]="region">{{region.name}}</option>
-</select>
-<app-region *ngIf="selectedRegion" [region]="selectedRegion"></app-region>
-<p>------------------------------------------------------------</p>

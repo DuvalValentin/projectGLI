@@ -18,6 +18,7 @@ export class SelectionComponent implements OnInit {
   selectedRegion:Region;
   departments:Array<Department>;
   selectedDepartment:Department;
+  townURL:string;
 
   constructor
   (
@@ -34,13 +35,20 @@ export class SelectionComponent implements OnInit {
   {
     this.selectedDepartment=null;
     this.selectedTown=null;
+    this.townURL=null;
     this.departments=this.backendDepartment.getDepartmentsByRegionId(this.selectedRegion.id);
   }
 
   onSelectDepartment()
   {
     this.selectedTown=null;
+    this.townURL=null;
     this.towns=this.backendTown.getTownsByDepartmentId(this.selectedDepartment.id);
+  }
+
+  onSelectTown()
+  {
+    this.townURL="town/"+this.selectedTown.id;
   }
   
 

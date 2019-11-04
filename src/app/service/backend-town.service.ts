@@ -1,11 +1,9 @@
 import {Injectable} from "@angular/core";
-
 import {HttpClient} from "@angular/common/http";
 
 import {Observable} from "rxjs";
 
 import {Town} from "../dto/town";
-
 import {TownCreator} from "../dto/townCreator";
 
 @Injectable({providedIn: 'root'})

@@ -1,6 +1,0 @@
-<p>Select a department</p>
-<select [(ngModel)]="selectedDepartment">
-    <option *ngFor="let department of departments" [ngValue]="department">{{department.name}}</option>
-</select>
-<app-department *ngIf="selectedDepartment" [department]="selectedDepartment"></app-department>
-<p>------------------------------------------------------------</p>

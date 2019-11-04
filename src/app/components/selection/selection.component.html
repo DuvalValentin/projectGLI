@@ -16,12 +16,12 @@
 <div *ngIf="selectedDepartment">
     <p>------------------------------------------------------------</p>
     <p>Select a town</p>
-    <select [(ngModel)]="selectedTown">
+    <select [(ngModel)]="selectedTown" (change)="onSelectTown()">
         <option *ngFor="let town of towns" [ngValue]="town">{{town.name}}</option>
     </select>
 </div>
 
 <div *ngIf="selectedTown">
     <p>------------------------------------------------------------</p>
-    <p>Détails de la ville : <a [routerLink]="selectedTown.id">{{selectedTown.name}}</a></p>
+    <p>Détails de la ville : <a [routerLink]="townURL">{{selectedTown.name}}</a></p>
 </div>

@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {Region} from "../dto/region";
 
 import {RegionCreator} from "../dto/regionCreator";
+import {Observable} from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class BackendRegionService 
@@ -13,6 +14,11 @@ export class BackendRegionService
   
   constructor(private http: HttpClient) 
   {
+  }
+
+  getRegion(id:number):Observable<Region>
+  {
+    return this.http.get<Region>('api/region/'+id);
   }
 
   getRegions():Array<Region>
