@@ -1,21 +1,7 @@
-<div>
-  <p>Select a region</p>
-  <select [(ngModel)]="selectedRegion" (change)="onSelectRegion()">
-    <option *ngFor="let region of regions" [ngValue]="region">{{region.name}}</option>
-  </select>
-</div>
-
-<div *ngIf="selectedRegion">
-  <p>Détails de la région : <a [routerLink]="selectedRegion.getUrl">{{selectedRegion.name}}</a></p>
-  <p>------------------------------------------------------------</p>
-  <p>Select a department</p>
-  <select [(ngModel)]="selectedDepartment" (change)="onSelectDepartment()">
-    <option *ngFor="let department of departments" [ngValue]="department">{{department.name}}</option>
-  </select>
-</div>
+<app-select-region (regionOut)="onSelectRegion($event)"></app-select-region>
+<app-select-department *ngIf="selectedRegion" (departmentOut)="onSelectDepartment($event)"></app-select-department>
 
 <div *ngIf="selectedDepartment">
-  <p>Détails du département : <a [routerLink]="selectedDepartment.getUrl">{{selectedDepartment.name}}</a></p>
   <p>------------------------------------------------------------</p>
   <p>Select a town</p>
   <select [(ngModel)]="selectedTown" (change)="onSelectTown()">

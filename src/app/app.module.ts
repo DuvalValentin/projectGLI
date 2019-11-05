@@ -18,6 +18,8 @@ import { TownAdderComponent } from './components/town-adder/town-adder.component
 import { CreatorComponent } from './components/creator/creator.component';
 import { SelectionComponent } from './components/selection/selection.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SelectRegionComponent } from './components/select-region/select-region.component';
+import { SelectDepartmentComponent } from './components/select-department/select-department.component';
 
 
 
@@ -30,7 +32,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     TownAdderComponent,
     CreatorComponent,
     SelectionComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SelectRegionComponent,
+    SelectDepartmentComponent
   ],
   imports: [
     BrowserModule,

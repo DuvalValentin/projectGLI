@@ -4,7 +4,7 @@ export class Town
 {
     name: string;
     id: number;
-    idDepartment:number;
+    idDepartement:number;
     idSports:Array<number>;
     getUrl:string;
 
@@ -12,7 +12,7 @@ export class Town
     {
       this.name=townTO.name;
       this.id=townTO.id;
-      this.idDepartment=townTO.idDepartement;
+      this.idDepartement=townTO.idDepartement;
       this.idSports=townTO.idSports;
       this.getUrl="/get/town/"+this.id;
     }

@@ -22,9 +22,6 @@ export class SelectionComponent implements OnInit {
   selectedRegion:Region;
   departments:Array<Department>;
   selectedDepartment:Department;
-  townURL:string;
-  departmentURL:string;
-  regionURL:string;
 
   constructor
   (
@@ -41,8 +38,9 @@ export class SelectionComponent implements OnInit {
   }
   ngOnInit() {}
 
-  onSelectRegion()
+  onSelectRegion(region:Region)
   {
+    this.selectedRegion=region;
     this.resetDepartments();
     this.backendDepartment.getDepartmentsByRegionId(this.selectedRegion.id).subscribe((e)=>
     {
@@ -50,18 +48,17 @@ export class SelectionComponent implements OnInit {
     });
   }
 
-  onSelectDepartment()
+  onSelectDepartment(department:Department)
   {
+    this.selectedDepartment=department;
     this.resetTowns();
-    this.townURL=null;this.backendTown.getTownsByDepartmentId(this.selectedDepartment.id).subscribe((e)=>{
+    this.backendTown.getTownsByDepartmentId(this.selectedDepartment.id).subscribe((e)=>{
       this.towns=this.mapper.arrayTownTOToArrayTown(e);
     });
-    this.departmentURL="department/"+this.selectedDepartment.id;
   }
 
   onSelectTown()
   {
-    this.townURL="town/"+this.selectedTown.id;
   }
 
   private  resetDepartments()
