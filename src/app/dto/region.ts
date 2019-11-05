@@ -1,12 +1,6 @@
-export class Region 
+export class RegionTO
 {
     name: string;
     id: number;
-    idDepartments:Array<number>
-
-    constructor(name:string,id:number)
-    {
-        this.name=name;
-        this.id=id;
-    }
+    idDepartments:Array<number>;
 }

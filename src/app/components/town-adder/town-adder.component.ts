@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms';
-import {Department} from '../../dto/department';
-import {Town} from '../../dto/town';
+import {DepartmentTO} from '../../dto/department';
+import {TownTO} from '../../dto/town';
 import {TownCreator} from '../../dto/townCreator';
-import {Region} from '../../dto/region';
+import {RegionTO} from '../../dto/region';
 import {BackendTownService} from '../../service/backend-town.service';
 import {BackendDepartmentService} from '../../service/backend-department.service';
 import {BackendRegionService} from '../../service/backend-region.service';
@@ -16,12 +16,12 @@ import {BackendRegionService} from '../../service/backend-region.service';
 export class TownAdderComponent implements OnInit {
 
   townForm:FormGroup;
-  towns:Array<Town>;
-  selectedTown:Town;
-  regions:Array<Region>;
-  selectedRegion:Region;
-  departments:Array<Department>;
-  selectedDepartment:Department;
+  //towns:Array<Town>;
+  //selectedTown:Town;
+  regions:Array<RegionTO>;
+  selectedRegion:RegionTO;
+  departments:Array<DepartmentTO>;
+  selectedDepartment:DepartmentTO;
 
   constructor
   (
@@ -30,7 +30,10 @@ export class TownAdderComponent implements OnInit {
     private backendRegion:BackendRegionService,
     private formBuilder:FormBuilder) 
   {
-    this.regions=this.backendRegion.getRegions();
+    this.backendRegion.getRegions().subscribe((e)=>
+    {
+      this.regions=e;
+    });
   }
 
   ngOnInit() 
@@ -41,14 +44,18 @@ export class TownAdderComponent implements OnInit {
   onSelectRegion()
   {
     this.selectedDepartment=null;
-    this.selectedTown=null;
-    this.departments=this.backendDepartment.getDepartmentsByRegionId(this.selectedRegion.id);
+    //this.selectedTown=null;
+    this.backendDepartment.getDepartmentsByRegionId(this.selectedRegion.id).subscribe((e)=>{
+      this.departments=e;
+    });
   }
 
   onSelectDepartment()
   {
-    this.selectedTown=null;
-    this.towns=this.backendTown.getTownsByDepartmentId(this.selectedDepartment.id);
+    //this.selectedTown=null;
+    /*this.backendTown.getTownsByDepartmentId(this.selectedDepartment.id).subscribe((e)=>{
+      this.towns=e;
+    });*/
   }
 
   initForm()

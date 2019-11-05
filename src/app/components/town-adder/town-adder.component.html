@@ -13,7 +13,7 @@
 <div *ngIf="selectedRegion" class="container-fluid form-group">
   <p>------------------------------------------------------------</p>
     <label>Département : </label>
-    <select [(ngModel)]="selectedDepartment" (change)="onSelectDepartment()">
+    <select [(ngModel)]="selectedDepartment">
       <option *ngFor="let department of departments" [ngValue]="department">{{department.name}}</option>
     </select>
 </div>

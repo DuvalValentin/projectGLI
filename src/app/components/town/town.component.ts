@@ -1,11 +1,14 @@
 import {Component,OnInit} from '@angular/core';
-import {Town} from '../../dto/town';
 import {ActivatedRoute} from '@angular/router';
-import {Department} from '../../dto/department';
+
+import {TownTO} from '../../dto/town';
+import {DepartmentTO} from '../../dto/department';
+import {RegionTO} from '../../dto/region';
+
 import {BackendTownService} from '../../service/backend-town.service';
 import {BackendDepartmentService} from '../../service/backend-department.service';
 import {BackendRegionService} from '../../service/backend-region.service';
-import {Region} from '../../dto/region';
+
 
 @Component({
   selector: 'app-town',
@@ -14,9 +17,9 @@ import {Region} from '../../dto/region';
 })
 export class TownComponent implements OnInit 
 {
-  town: Town;
-  department: Department;
-  region: Region;
+  town: TownTO;
+  department: DepartmentTO;
+  region: RegionTO;
   departmentURL:string;
   regionURL:string;
 

@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {Town} from '../../dto/town';
-import {Region} from '../../dto/region';
-import {Department} from '../../dto/department';
+
 import {BackendTownService} from '../../service/backend-town.service';
 import {BackendDepartmentService} from '../../service/backend-department.service';
 import {BackendRegionService} from '../../service/backend-region.service';
+import {Mapper} from '../../service/mapper.service';
+
+import {Region} from '../../model/region';
+import {Town} from '../../model/town';
+import {Department} from '../../model/department';
+
 
 @Component({
   selector: 'app-selection',
@@ -19,37 +23,56 @@ export class SelectionComponent implements OnInit {
   departments:Array<Department>;
   selectedDepartment:Department;
   townURL:string;
+  departmentURL:string;
+  regionURL:string;
 
   constructor
   (
     private backendTown: BackendTownService,
     private backendDepartment: BackendDepartmentService,
-    private backendRegion: BackendRegionService
+    private backendRegion: BackendRegionService,
+    private mapper:Mapper
   ) 
   {
-    this.regions=this.backendRegion.getRegions();
+    this.backendRegion.getRegions().subscribe((e)=>
+    {
+      this.regions=mapper.arrayRegionTOToArrayRegion(e);
+    });
   }
   ngOnInit() {}
 
   onSelectRegion()
   {
-    this.selectedDepartment=null;
-    this.selectedTown=null;
-    this.townURL=null;
-    this.departments=this.backendDepartment.getDepartmentsByRegionId(this.selectedRegion.id);
+    this.resetDepartments();
+    this.backendDepartment.getDepartmentsByRegionId(this.selectedRegion.id).subscribe((e)=>
+    {
+      this.departments=this.mapper.arrayDepartmentTOToArrayDepartment(e);
+    });
   }
 
   onSelectDepartment()
   {
-    this.selectedTown=null;
-    this.townURL=null;
-    this.towns=this.backendTown.getTownsByDepartmentId(this.selectedDepartment.id);
+    this.resetTowns();
+    this.townURL=null;this.backendTown.getTownsByDepartmentId(this.selectedDepartment.id).subscribe((e)=>{
+      this.towns=this.mapper.arrayTownTOToArrayTown(e);
+    });
+    this.departmentURL="department/"+this.selectedDepartment.id;
   }
 
   onSelectTown()
   {
     this.townURL="town/"+this.selectedTown.id;
   }
+
+  private  resetDepartments()
+  {
+    this.departments=null;
+    this.resetTowns();
+  }
   
+  private resetTowns()
+  {
+    this.towns=null;
+  }
 
 }

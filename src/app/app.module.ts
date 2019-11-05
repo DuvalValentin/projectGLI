@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import {BackendTownService} from './service/backend-town.service';
 import {BackendDepartmentService} from './service/backend-department.service';
 import {BackendRegionService} from './service/backend-region.service';
+import {Mapper} from './service/mapper.service';
 
 import { TownComponent } from './components/town/town.component';
 import { RegionComponent } from './components/region/region.component';
@@ -38,7 +39,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [BackendTownService,BackendDepartmentService,BackendRegionService],
+  providers: [BackendTownService,BackendDepartmentService,BackendRegionService,Mapper],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

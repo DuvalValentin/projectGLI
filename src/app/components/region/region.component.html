@@ -1,2 +1,5 @@
 <h2>{{region?.name}}</h2>
-<p>{{region?.id}}</p>
+<p>Comprenant les Départements : </p>
+<ul>
+  <li *ngFor="let department of departments"><a [routerLink]="department.getUrl">{{department.name}}</a></li>
+</ul>

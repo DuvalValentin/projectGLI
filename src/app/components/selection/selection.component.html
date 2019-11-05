@@ -1,27 +1,29 @@
 <div>
-    <p>Select a region</p>
-    <select [(ngModel)]="selectedRegion" (change)="onSelectRegion()">
-        <option *ngFor="let region of regions" [ngValue]="region">{{region.name}}</option>
-    </select>
+  <p>Select a region</p>
+  <select [(ngModel)]="selectedRegion" (change)="onSelectRegion()">
+    <option *ngFor="let region of regions" [ngValue]="region">{{region.name}}</option>
+  </select>
 </div>
 
 <div *ngIf="selectedRegion">
-    <p>------------------------------------------------------------</p>
-    <p>Select a department</p>
-    <select [(ngModel)]="selectedDepartment" (change)="onSelectDepartment()">
-        <option *ngFor="let department of departments" [ngValue]="department">{{department.name}}</option>
-    </select>
+  <p>Détails de la région : <a [routerLink]="selectedRegion.getUrl">{{selectedRegion.name}}</a></p>
+  <p>------------------------------------------------------------</p>
+  <p>Select a department</p>
+  <select [(ngModel)]="selectedDepartment" (change)="onSelectDepartment()">
+    <option *ngFor="let department of departments" [ngValue]="department">{{department.name}}</option>
+  </select>
 </div>
 
 <div *ngIf="selectedDepartment">
-    <p>------------------------------------------------------------</p>
-    <p>Select a town</p>
-    <select [(ngModel)]="selectedTown" (change)="onSelectTown()">
-        <option *ngFor="let town of towns" [ngValue]="town">{{town.name}}</option>
-    </select>
+  <p>Détails du département : <a [routerLink]="selectedDepartment.getUrl">{{selectedDepartment.name}}</a></p>
+  <p>------------------------------------------------------------</p>
+  <p>Select a town</p>
+  <select [(ngModel)]="selectedTown" (change)="onSelectTown()">
+    <option *ngFor="let town of towns" [ngValue]="town">{{town.name}}</option>
+  </select>
 </div>
 
 <div *ngIf="selectedTown">
-    <p>------------------------------------------------------------</p>
-    <p>Détails de la ville : <a [routerLink]="townURL">{{selectedTown.name}}</a></p>
+  <p>Détails de la ville : <a [routerLink]="selectedTown.getUrl">{{selectedTown.name}}</a></p>
+  <p>------------------------------------------------------------</p>
 </div>

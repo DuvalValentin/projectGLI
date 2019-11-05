@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 
 import {HttpClient} from "@angular/common/http";
 
-import {Region} from "../dto/region";
+import {RegionTO} from "../dto/region";
 
 import {RegionCreator} from "../dto/regionCreator";
 import {Observable} from "rxjs";
@@ -16,22 +16,14 @@ export class BackendRegionService
   {
   }
 
-  getRegion(id:number):Observable<Region>
+  getRegion(id:number):Observable<RegionTO>
   {
-    return this.http.get<Region>('api/region/'+id);
+    return this.http.get<RegionTO>('api/region/'+id);
   }
 
-  getRegions():Array<Region>
+  getRegions():Observable<Array<RegionTO>>
   {
-    let regions:Array<Region>=new Array();
-    this.http.get<Region[]>('api/region').subscribe((e)=>
-    {
-      e.forEach((region)=>
-      {
-        regions.push(region);
-      });
-    });
-    return regions;
+    return this.http.get<Array<RegionTO>>('api/region');
   }
 
   postRegion(regionCreator:RegionCreator)

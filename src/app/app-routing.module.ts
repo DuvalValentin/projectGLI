@@ -17,7 +17,7 @@ const routes: Routes =
   { path:'post',component:CreatorComponent},
   { path:'not-found',component:NotFoundComponent},
   { path: '', redirectTo:'get', pathMatch: 'full' },
-  //{ path:'**',redirectTo:'not-found',pathMatch:'full'}
+  { path:'**',redirectTo:'not-found',pathMatch:'full'}
 ];
 
 @NgModule({

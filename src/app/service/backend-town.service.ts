@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 
 import {Observable} from "rxjs";
 
-import {Town} from "../dto/town";
+import {TownTO} from "../dto/town";
 import {TownCreator} from "../dto/townCreator";
 
 @Injectable({providedIn: 'root'})
@@ -13,35 +13,19 @@ export class BackendTownService
 
   constructor(private http: HttpClient) {}
 
-  getTown(id: number): Observable<Town>
+  getTown(id: number): Observable<TownTO>
   {
-    return this.http.get<Town>('api/ville/'+id);
+    return this.http.get<TownTO>('api/ville/'+id);
   }
 
-  getTowns(): Array<Town>
+  getTowns(): Observable<Array<TownTO>>
   {
-    let towns: Array<Town>=new Array();
-    this.http.get<Town[]>('api/ville').subscribe((e) =>
-    {
-      e.forEach((element: Town) =>
-      {
-        towns.push(element);
-      });
-    });
-    return towns;
+    return this.http.get<Array<TownTO>>('api/ville');
   }
 
-  getTownsByDepartmentId(departmentId: number): Array<Town>
+  getTownsByDepartmentId(departmentId: number): Observable<Array<TownTO>>
   {
-    let towns: Array<Town>=new Array();
-    this.http.get<Town[]>('api/ville/byDepartmentId/'+departmentId).subscribe((e) =>
-    {
-      e.forEach((element: Town) =>
-      {
-        towns.push(element);
-      });
-    });
-    return towns;
+    return this.http.get<Array<TownTO>>('api/ville/byDepartmentId/'+departmentId);
   }
 
   postTown(townCreator: TownCreator)
