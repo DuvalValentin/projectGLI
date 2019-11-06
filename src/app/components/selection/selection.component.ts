@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import {BackendTownService} from '../../service/backend-town.service';
-import {BackendDepartmentService} from '../../service/backend-department.service';
-import {BackendRegionService} from '../../service/backend-region.service';
-import {Mapper} from '../../service/mapper.service';
-
 import {Region} from '../../model/region';
 import {Town} from '../../model/town';
 import {Department} from '../../model/department';
@@ -16,60 +11,50 @@ import {Department} from '../../model/department';
   styleUrls: ['./selection.component.css']
 })
 export class SelectionComponent implements OnInit {
-  towns:Array<Town>;
   selectedTown:Town;
-  regions:Array<Region>;
   selectedRegion:Region;
-  departments:Array<Department>;
   selectedDepartment:Department;
 
   constructor
   (
-    private backendTown: BackendTownService,
-    private backendDepartment: BackendDepartmentService,
-    private backendRegion: BackendRegionService,
-    private mapper:Mapper
   ) 
   {
-    this.backendRegion.getRegions().subscribe((e)=>
-    {
-      this.regions=mapper.arrayRegionTOToArrayRegion(e);
-    });
   }
   ngOnInit() {}
 
   onSelectRegion(region:Region)
   {
+
+    this.resetRegion();//tentative pour recharger le composant app-departement-selection
     this.selectedRegion=region;
-    this.resetDepartments();
-    this.backendDepartment.getDepartmentsByRegionId(this.selectedRegion.id).subscribe((e)=>
-    {
-      this.departments=this.mapper.arrayDepartmentTOToArrayDepartment(e);
-    });
   }
 
   onSelectDepartment(department:Department)
   {
+    this.resetDepartment();
     this.selectedDepartment=department;
-    this.resetTowns();
-    this.backendTown.getTownsByDepartmentId(this.selectedDepartment.id).subscribe((e)=>{
-      this.towns=this.mapper.arrayTownTOToArrayTown(e);
-    });
   }
 
-  onSelectTown()
+  onSelectTown(town:Town)
   {
+    this.selectedTown=town;
   }
 
-  private  resetDepartments()
+  private resetRegion()
   {
-    this.departments=null;
-    this.resetTowns();
+    this.selectedRegion=null;
+    this.resetDepartment();
   }
-  
-  private resetTowns()
+
+  private resetDepartment()
   {
-    this.towns=null;
+    this.selectedDepartment=null;
+    this.resetTown();
+    
+  }
+  private resetTown()
+  {
+    this.selectedTown=null;
   }
 
 }

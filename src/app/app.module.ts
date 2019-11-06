@@ -20,6 +20,7 @@ import { SelectionComponent } from './components/selection/selection.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SelectRegionComponent } from './components/select-region/select-region.component';
 import { SelectDepartmentComponent } from './components/select-department/select-department.component';
+import { SelectTownComponent } from './components/select-town/select-town.component';
 
 
 
@@ -34,7 +35,8 @@ import { SelectDepartmentComponent } from './components/select-department/select
     SelectionComponent,
     NotFoundComponent,
     SelectRegionComponent,
-    SelectDepartmentComponent
+    SelectDepartmentComponent,
+    SelectTownComponent
   ],
   imports: [
     BrowserModule,
