@@ -1,0 +1,15 @@
+<h2>Ajout d'un Département</h2>
+<br />
+<p>Sélectionnez la région puis indiquez le nom du département afin de créer un nouveau département</p>
+<app-separation></app-separation>
+<app-select-region (regionOut)="onSelectRegion($event)"></app-select-region>
+<p *ngIf="selectedRegion==null">La région n'est pas présente ? Rajoutez la <a routerLink="/post/region">ici</a> !</p>
+<app-separation></app-separation>
+<div *ngIf="selectedRegion" class="container-fluid form-group">
+  <form [formGroup]="departmentForm" (ngSubmit)="onSubmitForm()">
+    <label for="name">Nom du nouveau département : </label>
+    <input type="text" id="name" formControlName="name">
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </form>
+  <app-separation></app-separation>
+</div>

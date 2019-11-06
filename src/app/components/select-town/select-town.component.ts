@@ -5,8 +5,7 @@ import {Mapper} from '../../service/mapper.service';
 
 @Component({
   selector: 'app-select-town',
-  templateUrl: './select-town.component.html',
-  styleUrls: ['./select-town.component.css']
+  templateUrl: './select-town.component.html'
 })
 export class SelectTownComponent implements OnInit,OnChanges
 {

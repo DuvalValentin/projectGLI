@@ -5,8 +5,7 @@ import {Mapper} from '../../service/mapper.service';
 
 @Component({
   selector: 'app-select-department',
-  templateUrl: './select-department.component.html',
-  styleUrls: ['./select-department.component.css']
+  templateUrl: './select-department.component.html'
 })
 export class SelectDepartmentComponent implements OnInit,OnChanges
 {

@@ -1,0 +1,12 @@
+<h2>Ajout d'une Région</h2>
+<br />
+<p>Indiquez le nom de la région afin de créer une nouvelle région</p>
+<app-separation></app-separation>
+<div class="container-fluid form-group">
+  <form [formGroup]="regionForm" (ngSubmit)="onSubmitForm()">
+    <label for="name">Nom de la nouvelle région : </label>
+    <input type="text" id="name" formControlName="name">
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </form>
+</div>
+<app-separation></app-separation>

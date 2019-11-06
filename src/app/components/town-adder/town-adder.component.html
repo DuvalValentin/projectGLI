@@ -1,28 +1,21 @@
 <h2>Ajout d'une Ville</h2>
 <br />
-
 <p>Sélectionnez la région puis le département puis indiquez le nom de la ville afin de créer une nouvelle ville</p>
-<p>------------------------------------------------------------</p>
-<div class="container-fluid form-group">
-  <label>Région : </label>
-  <select [(ngModel)]="selectedRegion" (change)="onSelectRegion()">
-    <option *ngFor="let region of regions" [ngValue]="region">{{region.name}}</option>
-  </select>
-</div>
-
-<div *ngIf="selectedRegion" class="container-fluid form-group">
-  <p>------------------------------------------------------------</p>
-    <label>Département : </label>
-    <select [(ngModel)]="selectedDepartment">
-      <option *ngFor="let department of departments" [ngValue]="department">{{department.name}}</option>
-    </select>
-</div>
-
+<app-separation></app-separation>
+<app-select-region (regionOut)="onSelectRegion($event)"></app-select-region>
+<p *ngIf="selectedRegion==null">La région n'est pas présente ? Rajoutez la <a routerLink="/post/region">ici</a> !</p>
+<app-separation></app-separation>
+<app-select-department (departmentOut)="onSelectDepartment($event)" *ngIf="selectedRegion"
+  [regionId]="selectedRegion.id"></app-select-department>
+<div></div>
+<p *ngIf="selectedRegion && (selectedDepartment==null)">La département n'est pas présent ? Rajoutez le <a
+    routerLink="/post/department">ici</a> !</p>
+<app-separation *ngIf="selectedRegion"></app-separation>
 <div *ngIf="selectedDepartment" class="container-fluid form-group">
-  <p>------------------------------------------------------------</p>
   <form [formGroup]="townForm" (ngSubmit)="onSubmitForm()">
     <label for="name">Nom de la nouvelle ville : </label>
     <input type="text" id="name" formControlName="name">
     <button type="submit" class="btn btn-primary">Ajouter</button>
   </form>
+  <app-separation></app-separation>
 </div>

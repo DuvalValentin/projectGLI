@@ -3,7 +3,6 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 
 import {RegionTO} from "../dto/region";
-
 import {RegionCreator} from "../dto/regionCreator";
 import {Observable} from "rxjs";
 

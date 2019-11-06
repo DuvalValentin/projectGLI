@@ -10,8 +10,7 @@ import {Town} from '../../model/town';
 
 @Component({
   selector: 'app-department',
-  templateUrl: './department.component.html',
-  styleUrls: ['./department.component.css']
+  templateUrl: './department.component.html'
 })
 export class DepartmentComponent implements OnInit {
 

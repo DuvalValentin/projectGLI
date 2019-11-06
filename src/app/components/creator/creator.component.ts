@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-creator',
-  templateUrl: './creator.component.html',
-  styleUrls: ['./creator.component.css']
+  templateUrl: './creator.component.html'
 })
 export class CreatorComponent implements OnInit {
 

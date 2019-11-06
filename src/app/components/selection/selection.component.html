@@ -1,5 +1,10 @@
 <app-select-region (regionOut)="onSelectRegion($event)"></app-select-region>
-<p>------------------------------------------------------------</p>
-<app-select-department *ngIf="selectedRegion"  [regionId]="selectedRegion.id" (departmentOut)="onSelectDepartment($event)"></app-select-department>
-<p>------------------------------------------------------------</p>
+<p *ngIf="selectedRegion">Détails de la région : <a [routerLink]="selectedRegion.getUrl">{{selectedRegion.name}}</a></p>
+<app-separation></app-separation>
+<app-select-department *ngIf="selectedRegion" [regionId]="selectedRegion.id"
+  (departmentOut)="onSelectDepartment($event)"></app-select-department>
+  <p *ngIf="selectedDepartment">Détails du département : <a [routerLink]="selectedDepartment.getUrl">{{selectedDepartment.name}}</a></p>
+  <app-separation *ngIf="selectedRegion"></app-separation>
 <app-select-town *ngIf="selectedDepartment" [departmentId]="selectedDepartment.id" (townOut)="onSelectTown($event)"></app-select-town>
+<p *ngIf="selectedTown">Détails de la ville : <a [routerLink]="selectedTown.getUrl">{{selectedTown.name}}</a></p>
+<app-separation *ngIf="selectedDepartment"></app-separation>

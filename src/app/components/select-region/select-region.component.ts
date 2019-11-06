@@ -6,8 +6,7 @@ import {Mapper} from '../../service/mapper.service';
 
 @Component({
   selector: 'app-select-region',
-  templateUrl: './select-region.component.html',
-  styleUrls: ['./select-region.component.css']
+  templateUrl: './select-region.component.html'
 })
 export class SelectRegionComponent implements OnInit {
 

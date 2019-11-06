@@ -1,7 +1,6 @@
 <div>
-  <p>Select a region :</p>
+  <label>Select a region :</label>
   <select [(ngModel)]="selectedRegion" (change)="onSelectRegion()">
     <option *ngFor="let region of regions" [ngValue]="region">{{region.name}}</option>
   </select>
-  <p *ngIf="selectedRegion">Détails de la région : <a [routerLink]="selectedRegion.getUrl">{{selectedRegion.name}}</a></p>
 </div>

@@ -21,6 +21,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SelectRegionComponent } from './components/select-region/select-region.component';
 import { SelectDepartmentComponent } from './components/select-department/select-department.component';
 import { SelectTownComponent } from './components/select-town/select-town.component';
+import { DepartmentAdderComponent } from './components/department-adder/department-adder.component';
+import { RegionAdderComponent } from './components/region-adder/region-adder.component';
+import { SeparationComponent } from './components/separation/separation.component';
 
 
 
@@ -36,7 +39,10 @@ import { SelectTownComponent } from './components/select-town/select-town.compon
     NotFoundComponent,
     SelectRegionComponent,
     SelectDepartmentComponent,
-    SelectTownComponent
+    SelectTownComponent,
+    DepartmentAdderComponent,
+    RegionAdderComponent,
+    SeparationComponent
   ],
   imports: [
     BrowserModule,

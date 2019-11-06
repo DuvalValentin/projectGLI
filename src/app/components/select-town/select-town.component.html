@@ -1,5 +1,4 @@
-<p>Select a town</p>
+<label>Select a town</label>
 <select [(ngModel)]="selectedTown" (change)="onSelectTown()">
   <option *ngFor="let town of towns" [ngValue]="town">{{town.name}}</option>
 </select>
-<p *ngIf="selectedTown">Détails de la ville : <a [routerLink]="selectedTown.getUrl">{{selectedTown.name}}</a></p>

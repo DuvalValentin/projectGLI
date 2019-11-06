@@ -11,8 +11,7 @@ import {Region} from '../../model/region';
 
 @Component({
   selector: 'app-town',
-  templateUrl: './town.component.html',
-  styleUrls: ['./town.component.css']
+  templateUrl: './town.component.html'
 })
 export class TownComponent implements OnInit 
 {

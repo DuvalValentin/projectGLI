@@ -1,5 +1,4 @@
-<p>Select a department</p>
+<label>Select a department</label>
 <select [(ngModel)]="selectedDepartment" (change)="onSelectDepartment()">
   <option *ngFor="let department of departments" [ngValue]="department">{{department.name}}</option>
 </select>
-<p *ngIf="selectedDepartment">Détails du département : <a [routerLink]="selectedDepartment.getUrl">{{selectedDepartment.name}}</a></p>
