@@ -4,3 +4,6 @@
 <ul>
   <li *ngFor="let town of towns"><a [routerLink]="town.getUrl">{{town.name}}</a></li>
 </ul>
+<app-separation></app-separation>
+<p>Si ce département n'a pas/plus lieu d'être : <button class="btn btn-danger" (click)="suppress()">Supprimer</button></p>
+<app-separation></app-separation>

@@ -9,6 +9,10 @@ import {RegionComponent} from './components/region/region.component';
 import {TownAdderComponent} from './components/town-adder/town-adder.component';
 import {DepartmentAdderComponent} from './components/department-adder/department-adder.component';
 import {RegionAdderComponent} from './components/region-adder/region-adder.component';
+import {DeleteComponent} from './components/delete/delete.component';
+import {DeleteRegionComponent} from './components/delete-region/delete-region.component';
+import {DeleteDepartmentComponent} from './components/delete-department/delete-department.component';
+import {DeleteTownComponent} from './components/delete-town/delete-town.component';
 
 
 const routes: Routes = 
@@ -21,6 +25,10 @@ const routes: Routes =
   { path:'post/town',component:TownAdderComponent},
   { path:'post/department',component:DepartmentAdderComponent},
   { path:'post/region',component:RegionAdderComponent},
+  { path:'delete',component:DeleteComponent},
+  { path:'delete/region/:id', component:DeleteRegionComponent},
+  { path:'delete/department/:id',component:DeleteDepartmentComponent},
+  { path:'delete/town/:id',component:DeleteTownComponent},
   { path:'not-found',component:NotFoundComponent},
   { path: '', redirectTo:'get', pathMatch: 'full' },
   { path:'**',redirectTo:'not-found',pathMatch:'full'}

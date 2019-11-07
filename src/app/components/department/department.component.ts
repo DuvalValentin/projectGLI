@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {BackendDepartmentService} from '../../service/backend-department.service';
 import {BackendRegionService} from '../../service/backend-region.service';
 import {BackendTownService} from '../../service/backend-town.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Mapper} from '../../service/mapper.service';
 import {Department} from '../../model/department';
 import {Region} from '../../model/region';
@@ -25,7 +25,8 @@ export class DepartmentComponent implements OnInit {
     private backendDepartment:BackendDepartmentService,
     private backendTown:BackendTownService,
     private mapper:Mapper,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router:Router
   ) 
   {
     let id=this.route.snapshot.params["id"];
@@ -44,6 +45,11 @@ export class DepartmentComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  suppress()
+  {
+    this.router.navigate(["/delete/department/"+this.department.id]);
   }
 
 }

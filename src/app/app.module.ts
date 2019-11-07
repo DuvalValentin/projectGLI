@@ -24,6 +24,10 @@ import { SelectTownComponent } from './components/select-town/select-town.compon
 import { DepartmentAdderComponent } from './components/department-adder/department-adder.component';
 import { RegionAdderComponent } from './components/region-adder/region-adder.component';
 import { SeparationComponent } from './components/separation/separation.component';
+import { DeleteComponent } from './components/delete/delete.component';
+import { DeleteRegionComponent } from './components/delete-region/delete-region.component';
+import { DeleteDepartmentComponent } from './components/delete-department/delete-department.component';
+import { DeleteTownComponent } from './components/delete-town/delete-town.component';
 
 
 
@@ -42,7 +46,11 @@ import { SeparationComponent } from './components/separation/separation.componen
     SelectTownComponent,
     DepartmentAdderComponent,
     RegionAdderComponent,
-    SeparationComponent
+    SeparationComponent,
+    DeleteComponent,
+    DeleteRegionComponent,
+    DeleteDepartmentComponent,
+    DeleteTownComponent
   ],
   imports: [
     BrowserModule,

@@ -7,12 +7,8 @@ import {Observable} from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class BackendDepartmentService 
-{
-  private errorMessage:string="Error ! : ";
-  
-  constructor(private http: HttpClient) 
-  {
-  }
+{ 
+  constructor(private http: HttpClient) {}
 
   getDepartment(id:number):Observable<DepartmentTO>
   {
@@ -29,13 +25,13 @@ export class BackendDepartmentService
     return this.http.get<DepartmentTO[]>('api/departement/byRegionId/'+regionId)
   }
 
-  postDepartment(departmentCreator:DepartmentCreator)
+  postDepartment(departmentCreator:DepartmentCreator):Observable<any>
   {
-    this.http.post('api/departement',departmentCreator)
-    .subscribe
-    (
-      ()=>{console.log("Département créé");},
-      (error)=>{console.error(this.errorMessage+error);}
-    );
+    return this.http.post('api/departement',departmentCreator)
+  }
+
+  deleteDepartment(departmentId:number):Observable<any>
+  {
+    return this.http.delete('api/departement/'+departmentId);
   }
 }

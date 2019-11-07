@@ -2,3 +2,6 @@
 <p>Situé dans le département : <a [routerLink]="departmentURL">{{department?.name}}</a></p>
 <p>Lui même situé dans la région : <a [routerLink]="regionURL">{{region?.name}}</a></p>
 <p>Sport pratiquables : {{town?.idSports}}</p>
+<app-separation></app-separation>
+<p>Si cette ville n'a pas/plus lieu d'être : <button class="btn btn-danger" (click)="suppress()">Supprimer</button></p>
+<app-separation></app-separation>

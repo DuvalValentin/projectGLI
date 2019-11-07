@@ -5,13 +5,14 @@ import {HttpClient} from "@angular/common/http";
 import {RegionTO} from "../dto/region";
 import {RegionCreator} from "../dto/regionCreator";
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Injectable({providedIn: 'root'})
 export class BackendRegionService 
 {
   private errorMessage:string="Error ! : ";
   
-  constructor(private http: HttpClient) 
+  constructor(private http: HttpClient,private router:Router) 
   {
   }
 
@@ -31,7 +32,11 @@ export class BackendRegionService
     .subscribe
     (
       ()=>{console.log("Région créée");},
-      (error)=>{console.log(this.errorMessage+error)}
+      (error)=>{console.error(this.errorMessage+error)}
     );
+  }
+  deleteRegion(id:number):Observable<any>
+  {
+    return this.http.delete('api/region/'+id);
   }
 }

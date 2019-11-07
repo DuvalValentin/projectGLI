@@ -3,6 +3,7 @@ import {FormGroup, FormBuilder} from '@angular/forms';
 import {Region} from '../../model/region';
 import {BackendDepartmentService} from '../../service/backend-department.service';
 import {DepartmentCreator} from '../../dto/departmentCreator';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-department-adder',
@@ -16,7 +17,8 @@ export class DepartmentAdderComponent implements OnInit
   constructor
   (
     private backendDepartment:BackendDepartmentService,
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private router:Router
   ) 
   {}
 
@@ -47,7 +49,16 @@ export class DepartmentAdderComponent implements OnInit
       formValue['name'],
       this.selectedRegion.id
     );
-    this.backendDepartment.postDepartment(departmentCreator);
+    this.backendDepartment.postDepartment(departmentCreator)
+    .subscribe
+    (
+      ()=>
+      {
+        console.log("Département créé");
+        this.router.navigate(["/"]);
+      },
+      (error)=>{console.error("Error : "+error);}
+    );;
   }
 
 }

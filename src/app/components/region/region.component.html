@@ -3,3 +3,6 @@
 <ul>
   <li *ngFor="let department of departments"><a [routerLink]="department.getUrl">{{department.name}}</a></li>
 </ul>
+<app-separation></app-separation>
+<p>Si cette région n'a pas/plus lieu d'être : <button class="btn btn-danger" (click)="suppress()">Supprimer</button></p>
+<app-separation></app-separation>

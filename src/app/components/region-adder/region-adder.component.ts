@@ -3,6 +3,7 @@ import {FormGroup, FormBuilder} from '@angular/forms';
 import {BackendDepartmentService} from '../../service/backend-department.service';
 import {BackendRegionService} from '../../service/backend-region.service';
 import {RegionCreator} from '../../dto/regionCreator';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-region-adder',
@@ -14,7 +15,8 @@ export class RegionAdderComponent implements OnInit {
   constructor
   (
     private backendRegion:BackendRegionService,
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private router:Router
   )
   {}
 
@@ -39,5 +41,6 @@ export class RegionAdderComponent implements OnInit {
       formValue['name']
     );
     this.backendRegion.postRegion(regionCreator);
+    this.router.navigate(["/"])
   }
 }

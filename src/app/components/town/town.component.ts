@@ -1,5 +1,5 @@
 import {Component,OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {BackendTownService} from '../../service/backend-town.service';
 import {BackendDepartmentService} from '../../service/backend-department.service';
@@ -18,15 +18,16 @@ export class TownComponent implements OnInit
   town: Town;
   department: Department;
   region: Region;
-  departmentURL:string;
-  regionURL:string;
+  departmentURL: string;
+  regionURL: string;
 
   constructor
     (
       private backendTown: BackendTownService,
       private backendDepartment: BackendDepartmentService,
       private backendRegion: BackendRegionService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private router:Router
     )
   {
     let id: number=this.route.snapshot.params['id']
@@ -37,11 +38,19 @@ export class TownComponent implements OnInit
       {
         this.department=new Department(d);
         this.departmentURL="/get/department/"+this.department.id;
-        this.backendRegion.getRegion(this.department.idRegion).subscribe((r) =>
-        {
-          this.region=new Region(r);
-          this.regionURL="/get/region/"+this.region.id;
-        });
+        this.backendRegion.getRegion(this.department.idRegion).subscribe
+          (
+            (r) =>
+            {
+              this.region=new Region(r);
+              this.regionURL="/get/region/"+this.region.id;
+            },
+            (error)=>
+            {
+              console.error("ERROR : region non trouvée");
+              this.router.navigate["/not-found"];
+            }
+          );
       });
     });
 
@@ -50,5 +59,9 @@ export class TownComponent implements OnInit
   ngOnInit() 
   {
 
+  }
+  suppress()
+  {
+    this.router.navigate(["/delete/town/"+this.town.id]);
   }
 }
