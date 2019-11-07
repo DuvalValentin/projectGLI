@@ -28,6 +28,10 @@ import { DeleteComponent } from './components/delete/delete.component';
 import { DeleteRegionComponent } from './components/delete-region/delete-region.component';
 import { DeleteDepartmentComponent } from './components/delete-department/delete-department.component';
 import { DeleteTownComponent } from './components/delete-town/delete-town.component';
+import {AuthentificationService} from './service/authentification.service';
+import {GuardService} from './service/guard.service';
+import { AuthentificationComponent } from './components/authentification/authentification.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 
@@ -50,7 +54,9 @@ import { DeleteTownComponent } from './components/delete-town/delete-town.compon
     DeleteComponent,
     DeleteRegionComponent,
     DeleteDepartmentComponent,
-    DeleteTownComponent
+    DeleteTownComponent,
+    AuthentificationComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +65,14 @@ import { DeleteTownComponent } from './components/delete-town/delete-town.compon
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [BackendTownService,BackendDepartmentService,BackendRegionService,Mapper],
+  providers: [
+    BackendTownService,
+    BackendDepartmentService,
+    BackendRegionService,
+    Mapper,
+    AuthentificationService,
+    GuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

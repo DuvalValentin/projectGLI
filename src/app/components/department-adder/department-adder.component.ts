@@ -60,5 +60,4 @@ export class DepartmentAdderComponent implements OnInit
       (error)=>{console.error("Error : "+error);}
     );;
   }
-
 }

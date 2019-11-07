@@ -1,0 +1,3 @@
+<h2>Service d'authenfication très très très sécurisé (ou pas)</h2>
+<button *ngIf="isAuth;else connection" class="btn btn-danger" (click)="disconnect()">Deconnection</button>
+<ng-template #connection><button class="btn btn-success"  (click)="connect()">Connection</button></ng-template>

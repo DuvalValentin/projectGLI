@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {GuardService} from './service/guard.service';
 import {SelectionComponent} from './components/selection/selection.component';
 import {TownComponent} from './components/town/town.component';
 import {CreatorComponent} from './components/creator/creator.component';
@@ -13,6 +14,8 @@ import {DeleteComponent} from './components/delete/delete.component';
 import {DeleteRegionComponent} from './components/delete-region/delete-region.component';
 import {DeleteDepartmentComponent} from './components/delete-department/delete-department.component';
 import {DeleteTownComponent} from './components/delete-town/delete-town.component';
+import {AuthentificationComponent} from './components/authentification/authentification.component';
+
 
 
 const routes: Routes = 
@@ -21,14 +24,15 @@ const routes: Routes =
   { path: 'get/town/:id',component:TownComponent},
   { path: 'get/department/:id',component:DepartmentComponent},
   { path: 'get/region/:id',component:RegionComponent},
-  { path:'post',component:CreatorComponent},
-  { path:'post/town',component:TownAdderComponent},
-  { path:'post/department',component:DepartmentAdderComponent},
-  { path:'post/region',component:RegionAdderComponent},
-  { path:'delete',component:DeleteComponent},
-  { path:'delete/region/:id', component:DeleteRegionComponent},
-  { path:'delete/department/:id',component:DeleteDepartmentComponent},
-  { path:'delete/town/:id',component:DeleteTownComponent},
+  { path:'post', canActivate:[GuardService], component:CreatorComponent},
+  { path:'post/town',canActivate:[GuardService],component:TownAdderComponent},
+  { path:'post/department',canActivate:[GuardService],component:DepartmentAdderComponent},
+  { path:'post/region',canActivate:[GuardService],component:RegionAdderComponent},
+  { path:'delete',canActivate:[GuardService],component:DeleteComponent},
+  { path:'delete/region/:id',canActivate:[GuardService], component:DeleteRegionComponent},
+  { path:'delete/department/:id',canActivate:[GuardService],component:DeleteDepartmentComponent},
+  { path:'delete/town/:id',canActivate:[GuardService],component:DeleteTownComponent},
+  { path:'auth',component:AuthentificationComponent},
   { path:'not-found',component:NotFoundComponent},
   { path: '', redirectTo:'get', pathMatch: 'full' },
   { path:'**',redirectTo:'not-found',pathMatch:'full'}
