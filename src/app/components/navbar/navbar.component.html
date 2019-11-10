@@ -4,8 +4,8 @@
       <ul class="nav navbar-nav">
         <li routerLinkActive="active"><a class="active" routerLink="get" >Getter</a></li>
         <li routerLinkActive="active"><a routerLink="post" >Poster</a></li>
-        <li routerLinkActive="active"><a routerLink="delete">Deleter</a></li>
-        <li routerLinkActive="active"><a routerLink="auth">Authentification</a></li>
+        <li routerLinkActive="active"><a routerLink="delete" >Deleter</a></li>
+        <li routerLinkActive="active"><a routerLink="auth" [queryParams]="{returnUrl:router.url}">Authentification</a></li>
       </ul>
     </div>
   </div>

@@ -28,10 +28,11 @@ import { DeleteComponent } from './components/delete/delete.component';
 import { DeleteRegionComponent } from './components/delete-region/delete-region.component';
 import { DeleteDepartmentComponent } from './components/delete-department/delete-department.component';
 import { DeleteTownComponent } from './components/delete-town/delete-town.component';
-import {AuthentificationService} from './service/authentification.service';
-import {GuardService} from './service/guard.service';
+import { AuthentificationService } from './service/authentification.service';
+import { GuardService } from './service/guard.service';
 import { AuthentificationComponent } from './components/authentification/authentification.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ModifyRegionComponent } from './components/modify-region/modify-region.component';
 
 
 
@@ -56,7 +57,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     DeleteDepartmentComponent,
     DeleteTownComponent,
     AuthentificationComponent,
-    NavbarComponent
+    NavbarComponent,
+    ModifyRegionComponent
   ],
   imports: [
     BrowserModule,

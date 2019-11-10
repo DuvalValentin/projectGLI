@@ -35,6 +35,12 @@ export class BackendRegionService
       (error)=>{console.error(this.errorMessage+error)}
     );
   }
+
+  putRegion(regionTO:RegionTO):Observable<RegionTO>
+  {
+    return this.http.put<RegionTO>('api/region',regionTO);
+  }
+
   deleteRegion(id:number):Observable<any>
   {
     return this.http.delete('api/region/'+id);

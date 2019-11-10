@@ -11,7 +11,7 @@ export class Region
     {
       this.name=regionTO.name;
       this.id=regionTO.id;
-      this.idDepartments=regionTO.idDepartments;
+      this.idDepartments=regionTO.idDepartements;
       this.getUrl="/get/region/"+this.id;
     }
 }

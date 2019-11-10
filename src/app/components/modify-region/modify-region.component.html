@@ -1,0 +1,15 @@
+<h2>Modification d'une Région</h2>
+<br />
+<p>Ici vous pouvez modifier certaines informations de la région</p>
+<app-separation></app-separation>
+<div class="container-fluid form-group">
+  <form [formGroup]="regionForm" (ngSubmit)="onSubmitForm()">
+    <label for="name">Nouveau nom de la région : </label>
+    <input type="text" id="name" formControlName="name" [value]="initialRegion?.name"/>
+    <button type="submit" class="btn btn-primary">Valider</button>
+  </form>
+</div>
+<app-separation></app-separation>
+<p>Pour changer les départements appartenant à cette région il faut aller modifier les départements en questions 
+  <a routerLink="/put/">Retour à la page modifications</a>
+</p>

@@ -15,6 +15,7 @@ import {DeleteRegionComponent} from './components/delete-region/delete-region.co
 import {DeleteDepartmentComponent} from './components/delete-department/delete-department.component';
 import {DeleteTownComponent} from './components/delete-town/delete-town.component';
 import {AuthentificationComponent} from './components/authentification/authentification.component';
+import {ModifyRegionComponent} from './components/modify-region/modify-region.component';
 
 
 
@@ -32,6 +33,7 @@ const routes: Routes =
   { path:'delete/region/:id',canActivate:[GuardService], component:DeleteRegionComponent},
   { path:'delete/department/:id',canActivate:[GuardService],component:DeleteDepartmentComponent},
   { path:'delete/town/:id',canActivate:[GuardService],component:DeleteTownComponent},
+  { path:'put/region/:id',canActivate:[GuardService],component:ModifyRegionComponent},
   { path:'auth',component:AuthentificationComponent},
   { path:'not-found',component:NotFoundComponent},
   { path: '', redirectTo:'get', pathMatch: 'full' },
@@ -39,7 +41,9 @@ const routes: Routes =
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{
+    onSameUrlNavigation:"reload"
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

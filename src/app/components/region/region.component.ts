@@ -50,4 +50,9 @@ export class RegionComponent implements OnInit
   {
     this.router.navigate(["/delete/region/"+this.region.id]);
   }
+
+  modify()
+  {
+    this.router.navigate(["/put/region/"+this.region.id]);
+  }
 }
