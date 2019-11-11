@@ -11,28 +11,31 @@ import {BackendDepartmentService} from './service/backend-department.service';
 import {BackendRegionService} from './service/backend-region.service';
 import {Mapper} from './service/mapper.service';
 
-import { TownComponent } from './components/town/town.component';
-import { RegionComponent } from './components/region/region.component';
-import { DepartmentComponent } from './components/department/department.component';
-import { TownAdderComponent } from './components/town-adder/town-adder.component';
-import { CreatorComponent } from './components/creator/creator.component';
+import { TownComponent } from './components/elementsDisplayer/town/town.component';
+import { RegionComponent } from './components/elementsDisplayer/region/region.component';
+import { DepartmentComponent } from './components/elementsDisplayer/department/department.component';
+import { TownAdderComponent } from './components/creation/town-adder/town-adder.component';
+import { CreatorComponent } from './components/creation/creator.component';
 import { SelectionComponent } from './components/selection/selection.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { SelectRegionComponent } from './components/select-region/select-region.component';
-import { SelectDepartmentComponent } from './components/select-department/select-department.component';
-import { SelectTownComponent } from './components/select-town/select-town.component';
-import { DepartmentAdderComponent } from './components/department-adder/department-adder.component';
-import { RegionAdderComponent } from './components/region-adder/region-adder.component';
-import { SeparationComponent } from './components/separation/separation.component';
-import { DeleteComponent } from './components/delete/delete.component';
-import { DeleteRegionComponent } from './components/delete-region/delete-region.component';
-import { DeleteDepartmentComponent } from './components/delete-department/delete-department.component';
-import { DeleteTownComponent } from './components/delete-town/delete-town.component';
+import { NotFoundComponent } from './components/special/not-found/not-found.component';
+import { SelectRegionComponent } from './components/selection/select-region/select-region.component';
+import { SelectDepartmentComponent } from './components/selection/select-department/select-department.component';
+import { SelectTownComponent } from './components/selection/select-town/select-town.component';
+import { DepartmentAdderComponent } from './components/creation/department-adder/department-adder.component';
+import { RegionAdderComponent } from './components/creation/region-adder/region-adder.component';
+import { SeparationComponent } from './components/special/separation/separation.component';
+import { DeleteComponent } from './components/deletion/delete.component';
+import { DeleteRegionComponent } from './components/deletion/delete-region/delete-region.component';
+import { DeleteDepartmentComponent } from './components/deletion/delete-department/delete-department.component';
+import { DeleteTownComponent } from './components/deletion/delete-town/delete-town.component';
 import { AuthentificationService } from './service/authentification.service';
 import { GuardService } from './service/guard.service';
-import { AuthentificationComponent } from './components/authentification/authentification.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { ModifyRegionComponent } from './components/modify-region/modify-region.component';
+import { AuthentificationComponent } from './components/special/authentification/authentification.component';
+import { NavbarComponent } from './components/special/navbar/navbar.component';
+import { ModifyRegionComponent } from './components/modification/modify-region/modify-region.component';
+import { ModificationComponent } from './components/modification/modification.component';
+import { ModifyDepartmentComponent } from './components/modification/modify-department/modify-department.component';
+import { ModifyTownComponent } from './components/modification/modify-town/modify-town.component';
 
 
 
@@ -58,7 +61,10 @@ import { ModifyRegionComponent } from './components/modify-region/modify-region.
     DeleteTownComponent,
     AuthentificationComponent,
     NavbarComponent,
-    ModifyRegionComponent
+    ModifyRegionComponent,
+    ModificationComponent,
+    ModifyDepartmentComponent,
+    ModifyTownComponent
   ],
   imports: [
     BrowserModule,

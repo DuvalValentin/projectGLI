@@ -1,0 +1,10 @@
+<h2>{{department?.name}}</h2>
+<p>Situé dans la région de : <a [routerLink]="regionURL">{{region?.name}}</a></p>
+<p>Comprenant les villes : </p>
+<ul>
+  <li *ngFor="let town of towns"><a [routerLink]="town.getUrl">{{town.name}}</a></li>
+</ul>
+<app-separation></app-separation>
+<button class="btn btn-primary" (click)="modify()">Modifier</button>
+<button class="btn btn-danger" (click)="suppress()">Supprimer</button>
+<app-separation></app-separation>

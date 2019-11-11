@@ -1,0 +1,8 @@
+<h2>{{town?.name}}</h2>
+<p>Situé dans le département : <a [routerLink]="departmentURL">{{department?.name}}</a></p>
+<p>Lui même situé dans la région : <a [routerLink]="regionURL">{{region?.name}}</a></p>
+<p>Sport pratiquables : {{town?.idSports}}</p>
+<app-separation></app-separation>
+<button class="btn btn-primary" (click)="modify()">Modifier</button>
+<button class="btn btn-danger" (click)="suppress()">Supprimer</button>
+<app-separation></app-separation>

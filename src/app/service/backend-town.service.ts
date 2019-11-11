@@ -37,6 +37,12 @@ export class BackendTownService
         (error) => {console.log(this.errorMessage+error);}
       );
   }
+
+  putTown(townTO:TownTO):Observable<TownTO>
+  {
+    return this.http.put<TownTO>('api/ville',townTO);
+  }
+
   deleteTown(townId:number):Observable<any>
   {
     return this.http.delete('api/ville/'+townId);

@@ -1,0 +1,14 @@
+<h2>Modification du Département</h2>
+<br />
+<p>Sélectionnez la région pour canger le département de région</p>
+<app-separation></app-separation>
+<app-select-region (regionOut)="onSelectRegion($event)"></app-select-region>
+<app-separation></app-separation>
+<div *ngIf="selectedRegion" class="container-fluid form-group">
+  <form [formGroup]="departmentForm" (ngSubmit)="onSubmitForm()">
+    <label for="name">Nom du nouveau département : </label>
+    <input type="text" id="name" formControlName="name">
+    <button type="submit" class="btn btn-primary">Modifier</button>
+  </form>
+  <app-separation></app-separation>
+</div>

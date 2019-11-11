@@ -27,7 +27,12 @@ export class BackendDepartmentService
 
   postDepartment(departmentCreator:DepartmentCreator):Observable<any>
   {
-    return this.http.post('api/departement',departmentCreator)
+    return this.http.post('api/departement',departmentCreator);
+  }
+
+  putDepartment(departmentTO:DepartmentTO):Observable<DepartmentTO>
+  {
+    return this.http.put<DepartmentTO>('api/departement',departmentTO);
   }
 
   deleteDepartment(departmentId:number):Observable<any>
