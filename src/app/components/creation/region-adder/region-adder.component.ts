@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms';
-import {BackendDepartmentService} from '../../../service/backend-department.service';
 import {BackendRegionService} from '../../../service/backend-region.service';
 import {RegionCreator} from '../../../dto/regionCreator';
 import {Router} from '@angular/router';
@@ -40,7 +39,11 @@ export class RegionAdderComponent implements OnInit {
     (
       formValue['name']
     );
-    this.backendRegion.postRegion(regionCreator);
-    this.router.navigate(["/"])
+    this.backendRegion.postRegion(regionCreator).subscribe
+    (
+      ()=>{console.log("Région créée");},
+      (error)=>{console.error('Error : '+error)}
+    );
+    this.router.navigate(["/post"])
   }
 }

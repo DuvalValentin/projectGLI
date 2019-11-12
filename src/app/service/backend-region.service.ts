@@ -2,47 +2,41 @@ import {Injectable} from "@angular/core";
 
 import {HttpClient} from "@angular/common/http";
 
-import {RegionTO} from "../dto/region";
+import {Region} from "../dto/region";
 import {RegionCreator} from "../dto/regionCreator";
 import {Observable} from "rxjs";
-import {Router} from "@angular/router";
 
 @Injectable({providedIn: 'root'})
 export class BackendRegionService 
 {
-  private errorMessage:string="Error ! : ";
+  private readonly adress:string='api/region/';
   
-  constructor(private http: HttpClient,private router:Router) 
+  constructor(private http: HttpClient) 
   {
   }
 
-  getRegion(id:number):Observable<RegionTO>
+  getRegion(id:number):Observable<Region>
   {
-    return this.http.get<RegionTO>('api/region/'+id);
+    return this.http.get<Region>(this.adress+id);
   }
 
-  getRegions():Observable<Array<RegionTO>>
+  getRegions():Observable<Array<Region>>
   {
-    return this.http.get<Array<RegionTO>>('api/region');
+    return this.http.get<Array<Region>>(this.adress);
   }
 
-  postRegion(regionCreator:RegionCreator)
+  postRegion(regionCreator:RegionCreator):Observable<Region>
   {
-    this.http.post('api/region',regionCreator)
-    .subscribe
-    (
-      ()=>{console.log("Région créée");},
-      (error)=>{console.error(this.errorMessage+error)}
-    );
+    return this.http.post<Region>(this.adress,regionCreator);
   }
 
-  putRegion(regionTO:RegionTO):Observable<RegionTO>
+  putRegion(region:Region):Observable<Region>
   {
-    return this.http.put<RegionTO>('api/region',regionTO);
+    return this.http.put<Region>(this.adress,region);
   }
 
   deleteRegion(id:number):Observable<any>
   {
-    return this.http.delete('api/region/'+id);
+    return this.http.delete(this.adress+id);
   }
 }

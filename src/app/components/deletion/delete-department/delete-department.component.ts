@@ -31,7 +31,6 @@ export class DeleteDepartmentComponent implements OnInit
       }),
       (error)=>
       {
-        console.error("EkkiEkkiTappang");
         console.error("Error : "+error);
       }
   }

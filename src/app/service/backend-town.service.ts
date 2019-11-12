@@ -3,48 +3,43 @@ import {HttpClient} from "@angular/common/http";
 
 import {Observable} from "rxjs";
 
-import {TownTO} from "../dto/town";
+import {Town} from "../dto/town";
 import {TownCreator} from "../dto/townCreator";
 
 @Injectable({providedIn: 'root'})
 export class BackendTownService
 {
-  private errorMessage: string="Error ! : ";
+  private readonly adress:string='api/ville/';
 
   constructor(private http: HttpClient) {}
 
-  getTown(id: number): Observable<TownTO>
+  getTown(id: number): Observable<Town>
   {
-    return this.http.get<TownTO>('api/ville/'+id);
+    return this.http.get<Town>(this.adress+id);
   }
 
-  getTowns(): Observable<Array<TownTO>>
+  getTowns(): Observable<Array<Town>>
   {
-    return this.http.get<Array<TownTO>>('api/ville');
+    return this.http.get<Array<Town>>(this.adress);
   }
 
-  getTownsByDepartmentId(departmentId: number): Observable<Array<TownTO>>
+  getTownsByDepartmentId(departmentId: number): Observable<Array<Town>>
   {
-    return this.http.get<Array<TownTO>>('api/ville/byDepartmentId/'+departmentId);
+    return this.http.get<Array<Town>>(this.adress+'byDepartmentId/'+departmentId);
   }
 
-  postTown(townCreator: TownCreator)
+  postTown(townCreator: TownCreator):Observable<Town>
   {
-    this.http.post('api/ville',townCreator)
-      .subscribe
-      (
-        () => {console.log("Ville créée");},
-        (error) => {console.log(this.errorMessage+error);}
-      );
+    return this.http.post<Town>(this.adress,townCreator);
   }
 
-  putTown(townTO:TownTO):Observable<TownTO>
+  putTown(town:Town):Observable<Town>
   {
-    return this.http.put<TownTO>('api/ville',townTO);
+    return this.http.put<Town>(this.adress,town);
   }
 
   deleteTown(townId:number):Observable<any>
   {
-    return this.http.delete('api/ville/'+townId);
+    return this.http.delete(this.adress+townId);
   }
 }

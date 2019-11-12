@@ -24,25 +24,25 @@ import {ModifyTownComponent} from './components/modification/modify-town/modify-
 
 const routes: Routes = 
 [
-  { path: 'get', component: SelectionComponent },
-  { path: 'get/town/:id',component:TownComponent},
-  { path: 'get/department/:id',component:DepartmentComponent},
-  { path: 'get/region/:id',component:RegionComponent},
-  { path:'post', component:CreatorComponent},
+  { path:'get',component:SelectionComponent },
+  { path:'get/town/:id',component:TownComponent},
+  { path:'get/department/:id',component:DepartmentComponent},
+  { path:'get/region/:id',component:RegionComponent},
+  { path:'post',component:CreatorComponent},
   { path:'post/town',canActivate:[GuardService],component:TownAdderComponent},
   { path:'post/department',canActivate:[GuardService],component:DepartmentAdderComponent},
   { path:'post/region',canActivate:[GuardService],component:RegionAdderComponent},
   { path:'delete',component:DeleteComponent},
-  { path:'delete/region/:id',canActivate:[GuardService], component:DeleteRegionComponent},
+  { path:'delete/region/:id',canActivate:[GuardService],component:DeleteRegionComponent},
   { path:'delete/department/:id',canActivate:[GuardService],component:DeleteDepartmentComponent},
   { path:'delete/town/:id',canActivate:[GuardService],component:DeleteTownComponent},
-  { path: 'put',component:ModificationComponent},
+  { path:'put',component:ModificationComponent},
   { path:'put/region/:id',canActivate:[GuardService],component:ModifyRegionComponent},
   { path:'put/department/:id',canActivate:[GuardService],component:ModifyDepartmentComponent},
   { path:'put/town/:id',canActivate:[GuardService],component:ModifyTownComponent},
   { path:'auth',component:AuthentificationComponent},
   { path:'not-found',component:NotFoundComponent},
-  { path: '', redirectTo:'get', pathMatch: 'full' },
+  { path:'', redirectTo:'get', pathMatch:'full' },
   { path:'**',redirectTo:'not-found',pathMatch:'full'}
 ];
 

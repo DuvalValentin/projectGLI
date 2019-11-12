@@ -1,4 +1,4 @@
-export class TownTO
+export class Town
 {
     name: string;
     id: number;

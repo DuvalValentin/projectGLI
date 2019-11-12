@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms';
 import {TownCreator} from '../../../dto/townCreator';
 import {BackendTownService} from '../../../service/backend-town.service';
-import {Region} from '../../../model/region';
-import {Department} from '../../../model/department';
+import {Region} from '../../../dto/region';
+import {Department} from '../../../dto/department';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-town-adder',
@@ -18,7 +19,9 @@ export class TownAdderComponent implements OnInit {
   constructor
   (
     private backendTown:BackendTownService,
-    private formBuilder:FormBuilder) 
+    private formBuilder:FormBuilder,
+    private router:Router
+  )
   {
   }
 
@@ -54,6 +57,12 @@ export class TownAdderComponent implements OnInit {
       formValue['name'],
       this.selectedDepartment.id
     );
-    this.backendTown.postTown(townCreator);
+    this.backendTown.postTown(townCreator)
+    .subscribe
+    (
+      () => {console.log("Ville créée");},
+      (error) => {console.log("Error : "+error);}
+    );
+    this.router.navigate(["/post"])
   }
 }

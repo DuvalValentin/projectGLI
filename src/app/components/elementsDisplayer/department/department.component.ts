@@ -3,10 +3,9 @@ import {BackendDepartmentService} from '../../../service/backend-department.serv
 import {BackendRegionService} from '../../../service/backend-region.service';
 import {BackendTownService} from '../../../service/backend-town.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Mapper} from '../../../service/mapper.service';
-import {Department} from '../../../model/department';
-import {Region} from '../../../model/region';
-import {Town} from '../../../model/town';
+import {Department} from '../../../dto/department';
+import {Region} from '../../../dto/region';
+import {Town} from '../../../dto/town';
 
 @Component({
   selector: 'app-department',
@@ -24,23 +23,27 @@ export class DepartmentComponent implements OnInit {
     private backendRegion:BackendRegionService,
     private backendDepartment:BackendDepartmentService,
     private backendTown:BackendTownService,
-    private mapper:Mapper,
     private route: ActivatedRoute,
     private router:Router
   ) 
   {
     let id=this.route.snapshot.params["id"];
     this.backendDepartment.getDepartment(id).subscribe((d)=>{
-      this.department=new Department(d);
+      this.department=d;
       
-      this.backendRegion.getRegion(this.department.idRegion).subscribe((r)=>
-      {
-        this.region=new Region(r);
-        this.regionURL="/get/region/"+this.region.id;
-      });
+      this.backendRegion.getRegion(this.department.idRegion).subscribe(
+        (r)=>
+        {
+          this.region=r;
+          this.regionURL="/get/region/"+this.region.id;
+        },
+        (error) =>
+        {
+          this.router.navigate(["/not-found"])
+        });
     })
     this.backendTown.getTownsByDepartmentId(id).subscribe((ts)=>{
-      this.towns=this.mapper.arrayTownTOToArrayTown(ts);
+      this.towns=ts;
     });
   }
 

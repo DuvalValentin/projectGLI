@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder} from '@angular/forms';
-import {Region} from '../../../model/region';
+import {Region} from '../../../dto/region';
 import {BackendDepartmentService} from '../../../service/backend-department.service';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Department} from '../../../model/department';
-import {DepartmentTO} from '../../../dto/department';
+import {Department} from '../../../dto/department';
 
 @Component({
   selector: 'app-modify-department',
@@ -30,7 +29,7 @@ export class ModifyDepartmentComponent implements OnInit {
   ngOnInit() 
   {
     this.backendDepartment.getDepartment(this.route.snapshot.params["id"]).subscribe((d)=>{
-      this.initialDepartment=new Department(d);
+      this.initialDepartment=d;
       this.initForm();
     });
   }
@@ -52,14 +51,14 @@ export class ModifyDepartmentComponent implements OnInit {
   onSubmitForm() 
   {
     const formValue = this.departmentForm.value;
-    const departmentTO = new DepartmentTO
+    const department = new Department
     (
       this.initialDepartment.id,
       formValue['name'],
       this.selectedRegion.id,
       this.initialDepartment.idVilles
     );
-    this.backendDepartment.putDepartment(departmentTO)
+    this.backendDepartment.putDepartment(department)
     .subscribe
     (
       ()=>

@@ -1,7 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import {Region} from '../../../model/region';
+import {Region} from '../../../dto/region';
 import {BackendRegionService} from '../../../service/backend-region.service';
-import {Mapper} from '../../../service/mapper.service';
 
 
 @Component({
@@ -15,13 +14,12 @@ export class SelectRegionComponent implements OnInit {
   @Output()regionOut = new EventEmitter<Region>();
   constructor
   (
-    private backendRegion: BackendRegionService,
-    private mapper:Mapper
+    private backendRegion: BackendRegionService
   )
   {
-    this.backendRegion.getRegions().subscribe((e)=>
+    this.backendRegion.getRegions().subscribe((rs)=>
     {
-      this.regions=this.mapper.arrayRegionTOToArrayRegion(e);
+      this.regions=rs;
     });
   }
 

@@ -3,10 +3,9 @@ import {ActivatedRoute,Router} from '@angular/router';
 
 import {BackendDepartmentService} from '../../../service/backend-department.service';
 import {BackendRegionService} from '../../../service/backend-region.service';
-import {Mapper} from '../../../service/mapper.service';
 
-import {Department} from '../../../model/department';
-import {Region} from '../../../model/region';
+import {Department} from '../../../dto/department';
+import {Region} from '../../../dto/region';
 
 @Component({
   selector: 'app-region',
@@ -21,7 +20,6 @@ export class RegionComponent implements OnInit
     (
       private backendDepartment: BackendDepartmentService,
       private backendRegion: BackendRegionService,
-      private mapper: Mapper,
       private route: ActivatedRoute,
       private router: Router
     )
@@ -31,10 +29,10 @@ export class RegionComponent implements OnInit
       (
         (r) =>
         {
-          this.region=new Region(r);
+          this.region=r;
           this.backendDepartment.getDepartmentsByRegionId(id).subscribe((ds) =>
           {
-            this.departments=this.mapper.arrayDepartmentTOToArrayDepartment(ds);
+            this.departments=ds;
           });
         },
         (error) =>

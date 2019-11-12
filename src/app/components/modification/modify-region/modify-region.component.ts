@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BackendRegionService} from '../../../service/backend-region.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Region} from '../../../model/region';
-import {RegionTO} from '../../../dto/region';
+import {Region} from '../../../dto/region';
 
 @Component({
   selector: 'app-modify-region',
@@ -23,7 +22,7 @@ export class ModifyRegionComponent implements OnInit
   ) 
   {
     this.backendRegion.getRegion(this.route.snapshot.params["id"]).subscribe((r)=>{
-      this.initialRegion=new Region(r);
+      this.initialRegion=r;
     })
   }
 
@@ -43,13 +42,13 @@ export class ModifyRegionComponent implements OnInit
   onSubmitForm()
   {
     const formValue=this.regionForm.value;
-    const regionTO:RegionTO=new RegionTO
+    const region:Region=new Region
     (
       this.initialRegion.id,
       formValue['name'],
-      this.initialRegion.idDepartments
+      this.initialRegion.idDepartements
     )
-    this.backendRegion.putRegion(regionTO).subscribe
+    this.backendRegion.putRegion(region).subscribe
     (
       (r)=>
       {

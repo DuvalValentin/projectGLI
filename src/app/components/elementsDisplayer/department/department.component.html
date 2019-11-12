@@ -2,7 +2,7 @@
 <p>Situé dans la région de : <a [routerLink]="regionURL">{{region?.name}}</a></p>
 <p>Comprenant les villes : </p>
 <ul>
-  <li *ngFor="let town of towns"><a [routerLink]="town.getUrl">{{town.name}}</a></li>
+  <li *ngFor="let town of towns"><a [routerLink]="'/get/town/'+town.id">{{town.name}}</a></li>
 </ul>
 <app-separation></app-separation>
 <button class="btn btn-primary" (click)="modify()">Modifier</button>

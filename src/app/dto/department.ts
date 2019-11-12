@@ -1,4 +1,4 @@
-export class DepartmentTO
+export class Department
 {
     name: string;
     id: number;

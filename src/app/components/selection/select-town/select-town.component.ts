@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
-import {Town} from '../../../model/town';
+import {Town} from '../../../dto/town';
 import {BackendTownService} from '../../../service/backend-town.service';
-import {Mapper} from '../../../service/mapper.service';
 
 @Component({
   selector: 'app-select-town',
@@ -17,8 +16,7 @@ export class SelectTownComponent implements OnInit,OnChanges
 
   constructor
   (
-    private backendTown: BackendTownService,
-    private mapper:Mapper
+    private backendTown: BackendTownService
   ) 
   {
     
@@ -40,8 +38,8 @@ export class SelectTownComponent implements OnInit,OnChanges
 
   getTowns():void
   {
-    this.backendTown.getTownsByDepartmentId(this.departmentId).subscribe((e)=>{
-      this.towns=this.mapper.arrayTownTOToArrayTown(e);
+    this.backendTown.getTownsByDepartmentId(this.departmentId).subscribe((ts)=>{
+      this.towns=ts;
     })
   }
 

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder} from '@angular/forms';
-import {Region} from '../../../model/region';
-import {Department} from '../../../model/department';
+import {Region} from '../../../dto/region';
+import {Department} from '../../../dto/department';
 import {BackendTownService} from '../../../service/backend-town.service';
-import {TownTO} from '../../../dto/town';
-import {Town} from '../../../model/town';
+import {Town} from '../../../dto/town';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -32,7 +31,7 @@ export class ModifyTownComponent implements OnInit {
   {
     this.backendTown.getTown(this.route.snapshot.params["id"]).subscribe((t)=>
     {
-      this.initialTown=new Town(t);
+      this.initialTown=t;
       this.initForm();
     })
     
@@ -59,14 +58,14 @@ export class ModifyTownComponent implements OnInit {
   onSubmitForm() 
   {
     const formValue = this.townForm.value;
-    const townTO = new TownTO
+    const town = new Town
     (
       this.initialTown.id,
       formValue['name'],
       this.selectedDepartment.id,
       this.initialTown.idSports
     );
-    this.backendTown.putTown(townTO).subscribe
+    this.backendTown.putTown(town).subscribe
     (
       ()=>
       {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms';
-import {Region} from '../../../model/region';
+import {Region} from '../../../dto/region';
 import {BackendDepartmentService} from '../../../service/backend-department.service';
 import {DepartmentCreator} from '../../../dto/departmentCreator';
 import {Router} from '@angular/router';
@@ -55,7 +55,7 @@ export class DepartmentAdderComponent implements OnInit
       ()=>
       {
         console.log("Département créé");
-        this.router.navigate(["/"]);
+        this.router.navigate(["/post"]);
       },
       (error)=>{console.error("Error : "+error);}
     );;

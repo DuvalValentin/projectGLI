@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import {BackendTownService} from './service/backend-town.service';
 import {BackendDepartmentService} from './service/backend-department.service';
 import {BackendRegionService} from './service/backend-region.service';
-import {Mapper} from './service/mapper.service';
+import {BackendSportService} from './service/backend-sport.service';
 
 import { TownComponent } from './components/elementsDisplayer/town/town.component';
 import { RegionComponent } from './components/elementsDisplayer/region/region.component';
@@ -36,8 +36,6 @@ import { ModifyRegionComponent } from './components/modification/modify-region/m
 import { ModificationComponent } from './components/modification/modification.component';
 import { ModifyDepartmentComponent } from './components/modification/modify-department/modify-department.component';
 import { ModifyTownComponent } from './components/modification/modify-town/modify-town.component';
-
-
 
 @NgModule({
   declarations: [
@@ -77,7 +75,7 @@ import { ModifyTownComponent } from './components/modification/modify-town/modif
     BackendTownService,
     BackendDepartmentService,
     BackendRegionService,
-    Mapper,
+    BackendSportService,
     AuthentificationService,
     GuardService
   ],

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Location} from '@angular/common';
 import {AuthentificationService} from '../../../service/authentification.service';
 import {Router, ActivatedRoute} from '@angular/router';
 

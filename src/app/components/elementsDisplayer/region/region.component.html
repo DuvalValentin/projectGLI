@@ -1,7 +1,7 @@
 <h2>{{region?.name}}</h2>
 <p>Comprenant les Départements : </p>
 <ul>
-  <li *ngFor="let department of departments"><a [routerLink]="department.getUrl">{{department.name}}</a></li>
+  <li *ngFor="let department of departments"><a [routerLink]="'/get/department/'+department.id">{{department.name}}</a></li>
 </ul>
 <app-separation></app-separation>
 <button class="btn btn-primary" (click)="modify()">Modifier</button>

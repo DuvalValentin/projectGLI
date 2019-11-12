@@ -1,4 +1,4 @@
-export class RegionTO
+export class Region
 {
     name: string;
     id: number;

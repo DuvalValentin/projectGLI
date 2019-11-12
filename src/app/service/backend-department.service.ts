@@ -1,42 +1,43 @@
 import {HttpClient} from "@angular/common/http";
-
-import {DepartmentTO} from "../dto/department";
 import {Injectable} from "@angular/core";
+
+import {Department} from "../dto/department";
 import {DepartmentCreator} from "../dto/departmentCreator";
 import {Observable} from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class BackendDepartmentService 
-{ 
+{
+  private readonly adress:string='api/departement/';
   constructor(private http: HttpClient) {}
 
-  getDepartment(id:number):Observable<DepartmentTO>
+  getDepartment(id:number):Observable<Department>
   {
-    return this.http.get<DepartmentTO>('api/departement/'+id);
+    return this.http.get<Department>(this.adress+id);
   }
 
-  getDepartments():Observable<Array<DepartmentTO>>
+  getDepartments():Observable<Array<Department>>
   {
-    return this.http.get<Array<DepartmentTO>>('api/departement');
+    return this.http.get<Array<Department>>(this.adress);
   }
 
-  getDepartmentsByRegionId(regionId:number):Observable<Array<DepartmentTO>>
+  getDepartmentsByRegionId(regionId:number):Observable<Array<Department>>
   {
-    return this.http.get<DepartmentTO[]>('api/departement/byRegionId/'+regionId)
+    return this.http.get<Department[]>(this.adress+'byRegionId/'+regionId)
   }
 
   postDepartment(departmentCreator:DepartmentCreator):Observable<any>
   {
-    return this.http.post('api/departement',departmentCreator);
+    return this.http.post(this.adress,departmentCreator);
   }
 
-  putDepartment(departmentTO:DepartmentTO):Observable<DepartmentTO>
+  putDepartment(department:Department):Observable<Department>
   {
-    return this.http.put<DepartmentTO>('api/departement',departmentTO);
+    return this.http.put<Department>(this.adress,department);
   }
 
   deleteDepartment(departmentId:number):Observable<any>
   {
-    return this.http.delete('api/departement/'+departmentId);
+    return this.http.delete(this.adress+departmentId);
   }
 }
