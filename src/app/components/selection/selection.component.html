@@ -1,10 +1,13 @@
 <app-select-region (regionOut)="onSelectRegion($event)"></app-select-region>
-<p *ngIf="selectedRegion">Lien : <a [routerLink]="selectedRegionURL">{{selectedRegion.name}}</a></p>
+<p *ngIf="selectedRegion">Lien : <a [routerLink]="'region/'+selectedRegion.id">{{selectedRegion.name}}</a></p>
 <app-separation></app-separation>
 <app-select-department *ngIf="selectedRegion" [regionId]="selectedRegion.id"
   (departmentOut)="onSelectDepartment($event)"></app-select-department>
-  <p *ngIf="selectedDepartment">Lien : <a [routerLink]="selectedDepartmentURL">{{selectedDepartment.name}}</a></p>
+  <p *ngIf="selectedDepartment">Lien : <a [routerLink]="'department/'+selectedDepartment.id">{{selectedDepartment.name}}</a></p>
   <app-separation *ngIf="selectedRegion"></app-separation>
 <app-select-town *ngIf="selectedDepartment" [departmentId]="selectedDepartment.id" (townOut)="onSelectTown($event)"></app-select-town>
-<p *ngIf="selectedTown">Lien : <a [routerLink]="selectedTownURL">{{selectedTown.name}}</a></p>
+<p *ngIf="selectedTown">Lien : <a [routerLink]="'town/'+selectedTown.id">{{selectedTown.name}}</a></p>
 <app-separation *ngIf="selectedDepartment"></app-separation>
+<app-select-sport *ngIf="selectedTown" [townId]="selectedTown.id" (sportOut)="onSelectSport($event)"></app-select-sport>
+<p *ngIf="selectedSport">Lien : <a [routerLink]="'sport/'+selectedSport.id">{{selectedSport.name}}</a></p>
+<app-separation *ngIf="selectedTown"></app-separation>

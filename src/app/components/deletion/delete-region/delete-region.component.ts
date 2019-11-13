@@ -17,11 +17,12 @@ export class DeleteRegionComponent implements OnInit
     private backendRegion:BackendRegionService
   ) 
   {
-    this.regionId=this.route.snapshot.params["id"];
+    
   }
 
   ngOnInit() 
   {
+    this.regionId=this.route.snapshot.params["id"];
     this.backendRegion.deleteRegion(this.regionId).subscribe
     (
       ()=>

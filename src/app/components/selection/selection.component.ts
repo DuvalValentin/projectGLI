@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {Region} from '../../dto/region';
 import {Town} from '../../dto/town';
 import {Department} from '../../dto/department';
+import {Sport} from '../../dto/sport';
 
 @Component({
   selector: 'app-selection',
@@ -10,11 +11,9 @@ import {Department} from '../../dto/department';
 })
 export class SelectionComponent implements OnInit {
   selectedTown:Town;
-  selectedTownURL:string;
   selectedRegion:Region;
-  selectedRegionURL:string;
   selectedDepartment:Department;
-  selectedDepartmentURL:string;
+  selectedSport:Sport;
 
   constructor() {}
   ngOnInit() {}
@@ -24,33 +23,39 @@ export class SelectionComponent implements OnInit {
 
     this.resetDepartment();
     this.selectedRegion=region;
-    this.selectedRegionURL='region/'+this.selectedRegion.id;
   }
 
   onSelectDepartment(department:Department)
   {
     this.resetTown();
     this.selectedDepartment=department;
-    this.selectedDepartmentURL='department/'+this.selectedDepartment.id;
   }
 
   onSelectTown(town:Town)
   {
+    this.resetSport();
     this.selectedTown=town;
-    this.selectedTownURL='town/'+this.selectedTown.id;
+  }
+
+  onSelectSport(sport:Sport)
+  {
+    this.selectedSport=sport;
   }
 
   private resetDepartment()
   {
     this.selectedDepartment=null;
-    this.selectedDepartmentURL=null;
     this.resetTown();
     
   }
   private resetTown()
   {
+    this.resetSport();
     this.selectedTown=null;
-    this.selectedTownURL=null;
+  }
+  private resetSport()
+  {
+    this.selectedSport=null;
   }
 
 }

@@ -15,6 +15,7 @@ import { TownComponent } from './components/elementsDisplayer/town/town.componen
 import { RegionComponent } from './components/elementsDisplayer/region/region.component';
 import { DepartmentComponent } from './components/elementsDisplayer/department/department.component';
 import { TownAdderComponent } from './components/creation/town-adder/town-adder.component';
+import { SportComponent } from './components/elementsDisplayer/sport/sport.component';
 import { CreatorComponent } from './components/creation/creator.component';
 import { SelectionComponent } from './components/selection/selection.component';
 import { NotFoundComponent } from './components/special/not-found/not-found.component';
@@ -36,6 +37,9 @@ import { ModifyRegionComponent } from './components/modification/modify-region/m
 import { ModificationComponent } from './components/modification/modification.component';
 import { ModifyDepartmentComponent } from './components/modification/modify-department/modify-department.component';
 import { ModifyTownComponent } from './components/modification/modify-town/modify-town.component';
+import { SelectSportComponent } from './components/selection/select-sport/select-sport.component';
+import { DeleteSportComponent } from './components/deletion/delete-sport/delete-sport.component';
+
 
 @NgModule({
   declarations: [
@@ -62,7 +66,10 @@ import { ModifyTownComponent } from './components/modification/modify-town/modif
     ModifyRegionComponent,
     ModificationComponent,
     ModifyDepartmentComponent,
-    ModifyTownComponent
+    ModifyTownComponent,
+    SportComponent,
+    SelectSportComponent,
+    DeleteSportComponent
   ],
   imports: [
     BrowserModule,

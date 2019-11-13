@@ -8,6 +8,8 @@ import {BackendRegionService} from '../../../service/backend-region.service';
 import {Department} from '../../../dto/department';
 import {Town} from '../../../dto/town';
 import {Region} from '../../../dto/region';
+import {Sport} from '../../../dto/sport';
+import {BackendSportService} from '../../../service/backend-sport.service';
 
 @Component({
   selector: 'app-town',
@@ -18,14 +20,14 @@ export class TownComponent implements OnInit
   town: Town;
   department: Department;
   region: Region;
-  departmentURL: string;
-  regionURL: string;
+  sports:Array<Sport>;
 
   constructor
     (
       private backendTown: BackendTownService,
       private backendDepartment: BackendDepartmentService,
       private backendRegion: BackendRegionService,
+      private backendSport:BackendSportService,
       private route: ActivatedRoute,
       private router:Router
     )
@@ -37,13 +39,11 @@ export class TownComponent implements OnInit
       this.backendDepartment.getDepartment(this.town.idDepartement).subscribe((d) =>
       {
         this.department=d;
-        this.departmentURL="/get/department/"+this.department.id;
         this.backendRegion.getRegion(this.department.idRegion).subscribe
           (
             (r) =>
             {
               this.region=r;
-              this.regionURL="/get/region/"+this.region.id;
             },
             (error)=>
             {
@@ -52,7 +52,10 @@ export class TownComponent implements OnInit
           );
       });
     });
-
+    this.backendSport.getSportsByTownId(id).subscribe((ss)=>
+    {
+      this.sports=ss;
+    });
   }
 
   ngOnInit() 

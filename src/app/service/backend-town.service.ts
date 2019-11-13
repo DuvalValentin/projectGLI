@@ -28,6 +28,11 @@ export class BackendTownService
     return this.http.get<Array<Town>>(this.adress+'byDepartmentId/'+departmentId);
   }
 
+  getTownsBySportId(sportId: number): Observable<Array<Town>>
+  {
+    return this.http.get<Array<Town>>(this.adress+'bySportId/'+sportId);
+  }
+
   postTown(townCreator: TownCreator):Observable<Town>
   {
     return this.http.post<Town>(this.adress,townCreator);

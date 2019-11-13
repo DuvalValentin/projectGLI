@@ -16,8 +16,6 @@ export class DepartmentComponent implements OnInit {
   department: Department;
   region:Region;
   towns:Array<Town>;
-  townsURL:Array<string>
-  regionURL:string;
   constructor
   (
     private backendRegion:BackendRegionService,
@@ -27,6 +25,11 @@ export class DepartmentComponent implements OnInit {
     private router:Router
   ) 
   {
+
+  }
+
+  ngOnInit() 
+  {
     let id=this.route.snapshot.params["id"];
     this.backendDepartment.getDepartment(id).subscribe((d)=>{
       this.department=d;
@@ -35,7 +38,6 @@ export class DepartmentComponent implements OnInit {
         (r)=>
         {
           this.region=r;
-          this.regionURL="/get/region/"+this.region.id;
         },
         (error) =>
         {
@@ -45,9 +47,6 @@ export class DepartmentComponent implements OnInit {
     this.backendTown.getTownsByDepartmentId(id).subscribe((ts)=>{
       this.towns=ts;
     });
-  }
-
-  ngOnInit() {
   }
 
   suppress()

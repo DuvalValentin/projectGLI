@@ -1,6 +1,5 @@
-<h2>{{department?.name}}</h2>
-<p>Situé dans la région de : <a [routerLink]="'/get/region/'+region?.id">{{region?.name}}</a></p>
-<p>Comprenant les villes : </p>
+<h2>{{sport?.name}}</h2>
+<p>Pratiqué dans les villes : </p>
 <ul>
   <li *ngFor="let town of towns"><a [routerLink]="'/get/town/'+town.id">{{town.name}}</a></li>
 </ul>

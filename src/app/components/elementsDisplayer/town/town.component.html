@@ -1,7 +1,10 @@
 <h2>{{town?.name}}</h2>
-<p>Situé dans le département : <a [routerLink]="departmentURL">{{department?.name}}</a></p>
-<p>Lui même situé dans la région : <a [routerLink]="regionURL">{{region?.name}}</a></p>
-<p>Sport pratiquables : {{town?.idSports}}</p>
+<p>Situé dans le département : <a [routerLink]="'/get/department/'+department?.id">{{department?.name}}</a></p>
+<p>Lui même situé dans la région : <a [routerLink]="'/get/region/'+region?.id">{{region?.name}}</a></p>
+<p>Sport pratiquables : </p>
+<ul>
+  <li *ngFor="let sport of sports"><a [routerLink]="'/get/sport/'+sport.id">{{sport.name}}</a></li>
+</ul>
 <app-separation></app-separation>
 <button class="btn btn-primary" (click)="modify()">Modifier</button>
 <button class="btn btn-danger" (click)="suppress()">Supprimer</button>

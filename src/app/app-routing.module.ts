@@ -19,6 +19,8 @@ import {ModifyRegionComponent} from './components/modification/modify-region/mod
 import {ModificationComponent} from './components/modification/modification.component';
 import {ModifyDepartmentComponent} from './components/modification/modify-department/modify-department.component';
 import {ModifyTownComponent} from './components/modification/modify-town/modify-town.component';
+import {SportComponent} from './components/elementsDisplayer/sport/sport.component';
+import {DeleteSportComponent} from './components/deletion/delete-sport/delete-sport.component';
 
 
 
@@ -28,6 +30,7 @@ const routes: Routes =
   { path:'get/town/:id',component:TownComponent},
   { path:'get/department/:id',component:DepartmentComponent},
   { path:'get/region/:id',component:RegionComponent},
+  { path:'get/sport/:id',component:SportComponent},
   { path:'post',component:CreatorComponent},
   { path:'post/town',canActivate:[GuardService],component:TownAdderComponent},
   { path:'post/department',canActivate:[GuardService],component:DepartmentAdderComponent},
@@ -36,6 +39,7 @@ const routes: Routes =
   { path:'delete/region/:id',canActivate:[GuardService],component:DeleteRegionComponent},
   { path:'delete/department/:id',canActivate:[GuardService],component:DeleteDepartmentComponent},
   { path:'delete/town/:id',canActivate:[GuardService],component:DeleteTownComponent},
+  { path:'delete/sport/:id',canActivate:[GuardService],component:DeleteSportComponent},
   { path:'put',component:ModificationComponent},
   { path:'put/region/:id',canActivate:[GuardService],component:ModifyRegionComponent},
   { path:'put/department/:id',canActivate:[GuardService],component:ModifyDepartmentComponent},

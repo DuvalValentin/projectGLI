@@ -1,0 +1,4 @@
+<label>Select a sport</label>
+<select [(ngModel)]="selectedSport" (change)="onSelectSport()">
+  <option *ngFor="let sport of sports" [ngValue]="sport">{{sport.name}}</option>
+</select>

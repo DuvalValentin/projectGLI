@@ -23,6 +23,11 @@ export class BackendSportService
     return this.http.get<Array<Sport>>(this.adress);
   }
 
+  getSportsByTownId(townId:number):Observable<Array<Sport>>
+  {
+    return this.http.get<Array<Sport>>(this.adress+'byVilleId/'+townId);
+  }
+
   postSport(sport:SportCreator):Observable<Sport>
   {
     return this.http.post<Sport>(this.adress,sport);
@@ -33,7 +38,7 @@ export class BackendSportService
     return this.http.put<Sport>(this.adress,sport);
   }
 
-  delete(id:number):Observable<any>
+  deleteSport(id:number):Observable<any>
   {
     return this.http.delete<any>(this.adress);
   }

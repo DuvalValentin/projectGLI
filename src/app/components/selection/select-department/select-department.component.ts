@@ -12,7 +12,7 @@ export class SelectDepartmentComponent implements OnInit,OnChanges
   departments:Array<Department>;
   selectedDepartment:Department;
   @Input() regionId:number;
-  @Output()departmentOut = new EventEmitter<Department>();
+  @Output()departmentOut:EventEmitter<Department> = new EventEmitter<Department>();
 
   constructor(private backendDepartment: BackendDepartmentService)
   {
