@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {GuardService} from './service/guard.service';
-import {SelectionComponent} from './components/selection/selection.component';
 import {TownComponent} from './components/elementsDisplayer/town/town.component';
 import {CreatorComponent} from './components/creation/creator.component';
 import {NotFoundComponent} from './components/special/not-found/not-found.component';
@@ -21,12 +20,15 @@ import {ModifyDepartmentComponent} from './components/modification/modify-depart
 import {ModifyTownComponent} from './components/modification/modify-town/modify-town.component';
 import {SportComponent} from './components/elementsDisplayer/sport/sport.component';
 import {DeleteSportComponent} from './components/deletion/delete-sport/delete-sport.component';
+import {SportAdderComponent} from './components/creation/sport-adder/sport-adder.component';
+import {ModifySportComponent} from './components/modification/modify-sport/modify-sport.component';
+import {GetterComponent} from './components/selection/getter.component';
 
 
 
 const routes: Routes = 
 [
-  { path:'get',component:SelectionComponent },
+  { path:'get',component:GetterComponent },
   { path:'get/town/:id',component:TownComponent},
   { path:'get/department/:id',component:DepartmentComponent},
   { path:'get/region/:id',component:RegionComponent},
@@ -35,6 +37,7 @@ const routes: Routes =
   { path:'post/town',canActivate:[GuardService],component:TownAdderComponent},
   { path:'post/department',canActivate:[GuardService],component:DepartmentAdderComponent},
   { path:'post/region',canActivate:[GuardService],component:RegionAdderComponent},
+  { path:'post/sport',canActivate:[GuardService],component:SportAdderComponent},
   { path:'delete',component:DeleteComponent},
   { path:'delete/region/:id',canActivate:[GuardService],component:DeleteRegionComponent},
   { path:'delete/department/:id',canActivate:[GuardService],component:DeleteDepartmentComponent},
@@ -44,6 +47,7 @@ const routes: Routes =
   { path:'put/region/:id',canActivate:[GuardService],component:ModifyRegionComponent},
   { path:'put/department/:id',canActivate:[GuardService],component:ModifyDepartmentComponent},
   { path:'put/town/:id',canActivate:[GuardService],component:ModifyTownComponent},
+  { path:'put/sport/:id',canActivate:[GuardService],component:ModifySportComponent},
   { path:'auth',component:AuthentificationComponent},
   { path:'not-found',component:NotFoundComponent},
   { path:'', redirectTo:'get', pathMatch:'full' },

@@ -38,9 +38,19 @@ export class SelectTownComponent implements OnInit,OnChanges
 
   getTowns():void
   {
-    this.backendTown.getTownsByDepartmentId(this.departmentId).subscribe((ts)=>{
-      this.towns=ts;
-    })
+    if(this.departmentId!=0)
+    {
+      this.backendTown.getTownsByDepartmentId(this.departmentId).subscribe((ts)=>{
+        this.towns=ts;
+      });
+    }
+    else
+    {
+      this.backendTown.getTowns().subscribe((ts)=>{
+        this.towns=ts;
+      });
+    }
+    
   }
 
 }

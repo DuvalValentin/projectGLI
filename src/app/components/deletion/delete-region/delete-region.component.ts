@@ -28,7 +28,7 @@ export class DeleteRegionComponent implements OnInit
       ()=>
       {
         console.log("Région supprimée");
-        this.router.navigate(["/"]);
+        this.router.navigate(["/delete"]);
       },
       (error)=>{console.error("Error : "+error)}
     );

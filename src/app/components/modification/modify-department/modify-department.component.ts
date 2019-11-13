@@ -4,6 +4,7 @@ import {Region} from '../../../dto/region';
 import {BackendDepartmentService} from '../../../service/backend-department.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Department} from '../../../dto/department';
+import {BackendRegionService} from '../../../service/backend-region.service';
 
 @Component({
   selector: 'app-modify-department',
@@ -14,10 +15,12 @@ export class ModifyDepartmentComponent implements OnInit {
   departmentForm:FormGroup;
   selectedRegion:Region;
   initialDepartment:Department;
+  initialRegion:Region;
 
   constructor
   (
     private backendDepartment:BackendDepartmentService,
+    private backendRegion:BackendRegionService,
     private formBuilder:FormBuilder,
     private router:Router,
     private route:ActivatedRoute
@@ -30,6 +33,10 @@ export class ModifyDepartmentComponent implements OnInit {
   {
     this.backendDepartment.getDepartment(this.route.snapshot.params["id"]).subscribe((d)=>{
       this.initialDepartment=d;
+      this.backendRegion.getRegion(this.initialDepartment.idRegion).subscribe((r)=>{
+        this.initialRegion=r;
+        this.selectedRegion=r;
+      })
       this.initForm();
     });
   }
@@ -69,5 +76,4 @@ export class ModifyDepartmentComponent implements OnInit {
       (error)=>{console.error("Error : "+error);}
     );
   }
-
 }

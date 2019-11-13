@@ -11,3 +11,7 @@
 <app-select-sport *ngIf="selectedTown" [townId]="selectedTown.id" (sportOut)="onSelectSport($event)"></app-select-sport>
 <p *ngIf="selectedSport">Lien : <a [routerLink]="'sport/'+selectedSport.id">{{selectedSport.name}}</a></p>
 <app-separation *ngIf="selectedTown"></app-separation>
+<app-separation></app-separation>
+<app-select-sport townId=0 (sportOut)="onSelectGlobalSport($event)"></app-select-sport>
+<p *ngIf="selectedGlobalSport">Lien : <a [routerLink]="'sport/'+selectedGlobalSport.id">{{selectedGlobalSport.name}}</a></p>
+<app-separation *ngIf="selectedGlobalSport"></app-separation>

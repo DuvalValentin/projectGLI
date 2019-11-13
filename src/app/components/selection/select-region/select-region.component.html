@@ -1,6 +1,6 @@
 <div>
   <label>Select a region :</label>
   <select [(ngModel)]="selectedRegion" (change)="onSelectRegion()">
-    <option *ngFor="let region of regions" [ngValue]="region">{{region.name}}</option>
+    <option [selected]="region.id==initialRegion?.id" *ngFor="let region of regions" [ngValue]="region">{{region.name}}</option>
   </select>
 </div>

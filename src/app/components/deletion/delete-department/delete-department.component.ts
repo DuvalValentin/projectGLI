@@ -27,7 +27,7 @@ export class DeleteDepartmentComponent implements OnInit
       ()=>
       {
         console.log("Département supprimé");
-        this.router.navigate(["/"]);
+        this.router.navigate(["/delete"]);
       }),
       (error)=>
       {

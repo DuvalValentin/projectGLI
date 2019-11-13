@@ -12,6 +12,7 @@ export class SelectDepartmentComponent implements OnInit,OnChanges
   departments:Array<Department>;
   selectedDepartment:Department;
   @Input() regionId:number;
+  @Input() initialDepartment:Department;
   @Output()departmentOut:EventEmitter<Department> = new EventEmitter<Department>();
 
   constructor(private backendDepartment: BackendDepartmentService)
@@ -22,6 +23,11 @@ export class SelectDepartmentComponent implements OnInit,OnChanges
   ngOnInit():void
   {
     this.getDepartments();
+    if(this.initialDepartment)
+    {
+      this.selectedDepartment=this.initialDepartment;
+      this.onSelectDepartment()
+    }
   }
 
   ngOnChanges(): void

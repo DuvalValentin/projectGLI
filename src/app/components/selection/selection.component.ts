@@ -14,6 +14,7 @@ export class SelectionComponent implements OnInit {
   selectedRegion:Region;
   selectedDepartment:Department;
   selectedSport:Sport;
+  selectedGlobalSport:Sport;
 
   constructor() {}
   ngOnInit() {}
@@ -40,6 +41,11 @@ export class SelectionComponent implements OnInit {
   onSelectSport(sport:Sport)
   {
     this.selectedSport=sport;
+  }
+
+  onSelectGlobalSport(sport:Sport)
+  {
+    this.selectedGlobalSport=sport;
   }
 
   private resetDepartment()

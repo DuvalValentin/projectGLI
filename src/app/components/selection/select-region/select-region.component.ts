@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import {Region} from '../../../dto/region';
 import {BackendRegionService} from '../../../service/backend-region.service';
 
@@ -11,19 +11,26 @@ export class SelectRegionComponent implements OnInit {
 
   regions:Array<Region>;
   selectedRegion:Region;
+  @Input() initialRegion:Region;
   @Output()regionOut = new EventEmitter<Region>();
   constructor
   (
     private backendRegion: BackendRegionService
   )
   {
+    
+  }
+
+  ngOnInit() 
+  {
     this.backendRegion.getRegions().subscribe((rs)=>
     {
       this.regions=rs;
     });
-  }
-
-  ngOnInit() {
+    if(this.initialRegion)
+    {
+      this.selectedRegion=this.initialRegion;
+    }
   }
 
   onSelectRegion()

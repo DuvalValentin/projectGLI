@@ -21,21 +21,23 @@ export class ModifyRegionComponent implements OnInit
     private router:Router
   ) 
   {
-    this.backendRegion.getRegion(this.route.snapshot.params["id"]).subscribe((r)=>{
-      this.initialRegion=r;
-    })
+    
   }
 
   ngOnInit() 
   {
-    this.initForm();
+    this.backendRegion.getRegion(this.route.snapshot.params["id"]).subscribe((r)=>{
+      this.initialRegion=r;
+      this.initForm();
+    })
+    
   }
 
   private initForm()
   {
     this.regionForm=this.formBuilder.group
     ({
-      name:""
+      name:this.initialRegion.name
     });
   }
 

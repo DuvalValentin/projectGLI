@@ -39,6 +39,9 @@ import { ModifyDepartmentComponent } from './components/modification/modify-depa
 import { ModifyTownComponent } from './components/modification/modify-town/modify-town.component';
 import { SelectSportComponent } from './components/selection/select-sport/select-sport.component';
 import { DeleteSportComponent } from './components/deletion/delete-sport/delete-sport.component';
+import { SportAdderComponent } from './components/creation/sport-adder/sport-adder.component';
+import { ModifySportComponent } from './components/modification/modify-sport/modify-sport.component';
+import { GetterComponent } from './components/selection/getter.component';
 
 
 @NgModule({
@@ -69,7 +72,10 @@ import { DeleteSportComponent } from './components/deletion/delete-sport/delete-
     ModifyTownComponent,
     SportComponent,
     SelectSportComponent,
-    DeleteSportComponent
+    DeleteSportComponent,
+    SportAdderComponent,
+    ModifySportComponent,
+    GetterComponent
   ],
   imports: [
     BrowserModule,

@@ -38,10 +38,21 @@ export class SelectSportComponent implements OnInit,OnChanges
 
   getSports()
   {
-    this.backendSport.getSportsByTownId(this.townId).subscribe((ss)=>
+    if(this.townId!=0)
     {
-      this.sports=ss;
-    })
+      this.backendSport.getSportsByTownId(this.townId).subscribe((ss)=>
+      {
+        this.sports=ss;
+      })
+    }
+    else
+    {
+      this.backendSport.getSports().subscribe((ss)=>
+      {
+        this.sports=ss;
+      })
+    }
+    
 
   }
 

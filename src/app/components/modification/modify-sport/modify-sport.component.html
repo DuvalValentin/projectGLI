@@ -1,0 +1,16 @@
+<h2>Ajout d'un Sport</h2>
+<br />
+<p>Indiquez le nom du sport afin de créer un nouveau sport</p>
+<app-separation></app-separation>
+<div class="container-fluid form-group">
+  <form [formGroup]="sportForm" (ngSubmit)="onSubmitForm()">
+    <label for="name">Nom du nouveau sport : </label>
+    <input type="text" id="name" formControlName="name">
+    <button type="submit" class="btn btn-success">Ajouter</button><br />
+    <app-select-town departmentId=0 (townOut)="onSelectTown($event)"></app-select-town><button type="button" class="btn btn-success" (click)="addTown(selectedTown)">Ajouter Ville</button>
+    <ul>
+      <li *ngFor="let town of towns">{{town.name}}<button type="button" class="btn btn-danger" (click)="removeTown(town)">Enlever Ville</button></li>
+    </ul>
+  </form>
+</div>
+<app-separation></app-separation>

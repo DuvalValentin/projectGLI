@@ -27,7 +27,7 @@ export class DeleteSportComponent implements OnInit {
       ()=>
       {
         console.log("Sport supprimé");
-        this.router.navigate(["/"]);
+        this.router.navigate(["/delete"]);
       },
       (error)=>{console.error("Error : "+error)}
     );

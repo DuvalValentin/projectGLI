@@ -5,6 +5,8 @@ import {Department} from '../../../dto/department';
 import {BackendTownService} from '../../../service/backend-town.service';
 import {Town} from '../../../dto/town';
 import {ActivatedRoute, Router} from '@angular/router';
+import {BackendDepartmentService} from '../../../service/backend-department.service';
+import {BackendRegionService} from '../../../service/backend-region.service';
 
 @Component({
   selector: 'app-modify-town',
@@ -12,7 +14,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class ModifyTownComponent implements OnInit {
 
-  initialTown:Town
+  initialTown:Town;
+  initialDepartment:Department;
+  initialRegion:Region;
   townForm:FormGroup;
   selectedRegion:Region;
   selectedDepartment:Department;
@@ -20,6 +24,8 @@ export class ModifyTownComponent implements OnInit {
   constructor
   (
     private backendTown:BackendTownService,
+    private backendDepartment:BackendDepartmentService,
+    private backendRegion:BackendRegionService,
     private formBuilder:FormBuilder,
     private route : ActivatedRoute,
     private router:Router
@@ -32,6 +38,15 @@ export class ModifyTownComponent implements OnInit {
     this.backendTown.getTown(this.route.snapshot.params["id"]).subscribe((t)=>
     {
       this.initialTown=t;
+      this.backendDepartment.getDepartment(this.initialTown.idDepartement).subscribe((d)=>
+      {
+        this.initialDepartment=d;
+        this.selectedDepartment=d;
+        this.backendRegion.getRegion(this.initialDepartment.idRegion).subscribe((r)=>{
+          this.initialRegion=r;
+          this.selectedRegion=r;
+        })
+      })
       this.initForm();
     })
     

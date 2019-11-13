@@ -27,7 +27,7 @@ export class DeleteTownComponent implements OnInit {
       ()=>
       {
         console.log("Ville supprimée");
-        this.router.navigate(["/"]);
+        this.router.navigate(["/delete"]);
       },
       (error)=>
       {

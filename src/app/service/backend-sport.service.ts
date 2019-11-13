@@ -40,6 +40,6 @@ export class BackendSportService
 
   deleteSport(id:number):Observable<any>
   {
-    return this.http.delete<any>(this.adress);
+    return this.http.delete<any>(this.adress+id);
   }
 }

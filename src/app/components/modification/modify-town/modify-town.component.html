@@ -1,11 +1,12 @@
 <h2>Modification d'une Ville</h2>
 <br />
-<p>Changez la région et le départmement puis rentrez le nouveau nom</p>
+<p>Changez la région et/ou le départmement pour déplacer la ville.</p>
+<p>Rentrez un nouveau nom si souhaitez modifier le nom de la ville.</p>
 <app-separation></app-separation>
-<app-select-region (regionOut)="onSelectRegion($event)"></app-select-region>
+<app-select-region *ngIf="initialRegion" (regionOut)="onSelectRegion($event)" [initialRegion]="initialRegion"></app-select-region>
 <app-separation></app-separation>
-<app-select-department (departmentOut)="onSelectDepartment($event)" *ngIf="selectedRegion"
-  [regionId]="selectedRegion.id"></app-select-department>
+<app-select-department *ngIf="selectedRegion" (departmentOut)="onSelectDepartment($event)" 
+  [initialDepartment]="initialDepartment"[regionId]="selectedRegion.id"></app-select-department>
 <div></div>
 <app-separation *ngIf="selectedRegion"></app-separation>
 <div *ngIf="selectedDepartment" class="container-fluid form-group">

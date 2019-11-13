@@ -1,13 +1,11 @@
 export class SportCreator
 {
-  id:number;
   name:string;
-  idTowns:Array<number>
+  idVilles:Array<number>
 
-  constructor(id:number,name:string,idTowns:Array<number>)
+  constructor(name:string,idVilles:Array<number>)
   {
-    this.id=id;
     this.name=name;
-    this.idTowns=idTowns;
+    this.idVilles=idVilles;
   }
 }
